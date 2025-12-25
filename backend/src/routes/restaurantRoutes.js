@@ -1,4 +1,4 @@
-// router = smaller Express application for handling only URLs
+// router = smaller Express application for handling only URLs => defines urls
 
 const express = require('express');
 const router = express.Router();
