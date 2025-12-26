@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS delivery_zones (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    base_delivery_time INTEGER NOT NULL,
+    base_delivery_time INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS users (
@@ -52,21 +52,25 @@ CREATE TABLE IF NOT EXISTS orders (
     status TEXT NOT NULL,
     estimated_delivery_time INTEGER,
     voucher_id INTEGER,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-    FOREIGN KEY (vaucher_id) REFERENCES vouchers(id)
+    FOREIGN KEY (voucher_id) REFERENCES vouchers(id)
 );
 
-CREATE TABLE IF NOT EXISTS order_items (
+CREATE TABLE IF NOT EXISTS order_items ( -- many-to-many relationship => order <-> dish
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     order_id INTEGER NOT NULL,
     dish_id INTEGER NOT NULL,
     quantity INTEGER NOT NULL,
     price REAL NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(id),
-    FOREIGN KEY (dish_id) REFERENCES dishes(id)
+    FOREIGN KEY (dish_id) REFERENCES dishes(id),
+    UNIQUE (order_id, dish_id) -- combinations have to be unique - duplicate order-dish combos not allowed
 );
 
 CREATE TABLE IF NOT EXISTS reviews (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     restaurant_id INTEGER NOT NULL,
     dish_id INTEGER,
@@ -75,5 +79,5 @@ CREATE TABLE IF NOT EXISTS reviews (
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-    FOREIGN KEY (dish_id) REFERENCES dishes(id),
-)
+    FOREIGN KEY (dish_id) REFERENCES dishes(id)
+);
