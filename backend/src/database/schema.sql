@@ -21,3 +21,28 @@ CREATE TABLE IF NOT EXISTS restaurants (
     FOREIGN KEY (delivery_zone_id) REFERENCES delivery_zones(id)
 );
 
+CREATE TABLE IF NOT EXISTS categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    restaurant_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+);
+
+CREATE TABLE IF NOT EXISTS dishes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    category_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    description TEXT,
+    price REAL NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES categories(id)
+);
+
+CREATE TABLE IF NOT EXISTS vouchers (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    code TEXT NOT NULL UNIQUE,
+    discount_type TEXT NOT NULL,
+    discount_value REAL NOT NULL,
+    is_active INTEGER DEFAULT 1
+);
+
+
