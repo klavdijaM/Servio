@@ -45,4 +45,35 @@ CREATE TABLE IF NOT EXISTS vouchers (
     is_active INTEGER DEFAULT 1
 );
 
+CREATE TABLE IF NOT EXISTS orders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    restaurant_id INTEGER NOT NULL,
+    status TEXT NOT NULL,
+    estimated_delivery_time INTEGER,
+    voucher_id INTEGER,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+    FOREIGN KEY (vaucher_id) REFERENCES vouchers(id)
+);
 
+CREATE TABLE IF NOT EXISTS order_items (
+    order_id INTEGER NOT NULL,
+    dish_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    price REAL NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES orders(id),
+    FOREIGN KEY (dish_id) REFERENCES dishes(id)
+);
+
+CREATE TABLE IF NOT EXISTS reviews (
+    user_id INTEGER NOT NULL,
+    restaurant_id INTEGER NOT NULL,
+    dish_id INTEGER,
+    rating INTEGER NOT NULL,
+    comment TEXT,
+    created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
+    FOREIGN KEY (dish_id) REFERENCES dishes(id),
+)
