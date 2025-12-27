@@ -1,6 +1,6 @@
 // defines what the backend can do - describes its behavior
-
-const express = require('express'); //
+require('./database/db');
+const express = require('express');
 const app = express(); // creates the backend application object
 const restaurantRoutes = require('./routes/restaurantRoutes');
 
