@@ -517,8 +517,130 @@ insertDishes(37, [
 ]);
 
 
+// **** 7. Pizza Nord (Italian) **** //
 
+// Starters
+insertDishes(38, [
+    { name: 'Bruschetta Classica', description: 'Grilled bread with tomatoes, garlic and basil', price: 6.50 },
+    { name: 'Garlic Bread', description: 'Oven-baked bread with garlic butter', price: 5.00 },
+    { name: 'Antipasto Plate', description: 'Selection of Italian cold cuts and cheese', price: 9.50 }
+]);
 
+// Pizza
+insertDishes(39, [
+    { name: 'Pizza Margherita', description: 'Tomato sauce, mozzarella, fresh basil', price: 9.50 },
+    { name: 'Pizza Salami', description: 'Tomato sauce, mozzarella, spicy salami', price: 11.50 },
+    { name: 'Pizza Prosciutto', description: 'Tomato sauce, mozzarella, cooked ham', price: 11.00 },
+    { name: 'Pizza Quattro Formaggi', description: 'Mozzarella, gorgonzola, parmesan, emmental', price: 12.50 },
+    { name: 'Pizza Diavola', description: 'Spicy salami, chili, tomato sauce, mozzarella', price: 12.00 }
+]);
 
+// Pasta
+insertDishes(40, [
+    { name: 'Spaghetti Bolognese', description: 'Classic beef ragù with parmesan', price: 11.50 },
+    { name: 'Penne Arrabbiata', description: 'Spicy tomato sauce with garlic and chili', price: 10.50 },
+    { name: 'Tagliatelle Carbonara', description: 'Creamy sauce with bacon and parmesan', price: 12.00 },
+    { name: 'Spaghetti Vongole', description: 'Spaghetti with clams, white wine, garlic and parsley', price: 14.50 }
+]);
 
+// Desserts
+insertDishes(41, [
+    { name: 'Tiramisu', description: 'Classic Italian dessert with espresso and mascarpone', price: 6.50 },
+    { name: 'Panna Cotta', description: 'Vanilla cream dessert with berry sauce', price: 6.00 }
+]);
+
+// Drinks
+insertDishes(42, [
+    { name: 'Cola', description: 'Chilled soft drink', price: 3.00 },
+    { name: 'Sparkling Water', description: 'Italian mineral water', price: 3.50 },
+    { name: 'Red Wine (0.2l)', description: 'House Italian red wine', price: 5.50 }
+]);
+
+// **** 8. Asia Wok Express (Asian) **** //
+
+// Soups
+insertDishes(43, [
+    { name: 'Miso Soup', description: 'Light soybean soup with tofu and spring onions', price: 4.50 },
+    { name: 'Hot & Sour Soup', description: 'Spicy and sour soup with vegetables', price: 5.00 },
+    { name: 'Chicken Wonton Soup', description: 'Clear broth with chicken wontons', price: 5.50 }
+]);
+
+// Starters
+insertDishes(44, [
+    { name: 'Spring Rolls', description: 'Crispy vegetable spring rolls', price: 5.50 },
+    { name: 'Chicken Satay', description: 'Grilled chicken skewers with peanut sauce', price: 7.50 },
+    { name: 'Edamame', description: 'Steamed soybeans with sea salt', price: 4.50 }
+]);
+
+// Noodles
+insertDishes(45, [
+    { name: 'Chicken Noodles', description: 'Wok-fried noodles with chicken and vegetables', price: 11.00 },
+    { name: 'Vegetable Noodles', description: 'Wok-fried noodles with seasonal vegetables', price: 10.00 },
+    { name: 'Beef Udon', description: 'Thick udon noodles with beef and soy sauce', price: 12.50 },
+    { name: 'Shrimp Pad Thai', description: 'Rice noodles with shrimp, peanuts and tamarind sauce', price: 13.50 }
+]);
+
+// Rice Dishes
+insertDishes(46, [
+    { name: 'Chicken Fried Rice', description: 'Fried rice with chicken and egg', price: 10.50 },
+    { name: 'Vegetable Fried Rice', description: 'Fried rice with mixed vegetables', price: 9.50 },
+    { name: 'Beef Teriyaki Rice', description: 'Grilled beef with teriyaki sauce and rice', price: 13.00 }
+]);
+
+// Specials
+insertDishes(47, [
+    { name: 'Sweet & Sour Chicken', description: 'Crispy chicken in sweet and sour sauce', price: 12.00 },
+    { name: 'Kung Pao Chicken', description: 'Spicy chicken with peanuts and vegetables', price: 12.50 },
+    { name: 'Thai Green Curry', description: 'Coconut curry with vegetables and jasmine rice', price: 13.50 }
+]);
+
+// Desserts
+insertDishes(48, [
+    { name: 'Mango Sticky Rice', description: 'Sweet sticky rice with mango and coconut milk', price: 6.50 },
+    { name: 'Fried Banana', description: 'Crispy fried banana with honey', price: 5.50 }
+]);
+
+// Drinks
+insertDishes(49, [
+    { name: 'Jasmine Tea', description: 'Traditional hot jasmine tea', price: 3.00 },
+    { name: 'Lychee Juice', description: 'Sweet lychee fruit drink', price: 3.50 },
+    { name: 'Coconut Water', description: 'Natural coconut water', price: 4.00 }
+]);
+
+// **** 9. Anatolia Kebap (Kebab) **** //
+
+// Kebap
+insertDishes(50, [
+    { name: 'Chicken Döner', description: 'Marinated chicken döner meat', price: 9.00 },
+    { name: 'Beef Döner', description: 'Spiced beef döner meat', price: 9.50 },
+    { name: 'Mixed Döner', description: 'Chicken and beef döner meat', price: 10.00 }
+]);
+
+// Wraps
+insertDishes(51, [
+    { name: 'Chicken Döner Wrap', description: 'Chicken döner in flatbread with salad and sauce', price: 7.50 },
+    { name: 'Beef Döner Wrap', description: 'Beef döner in flatbread with vegetables', price: 8.00 },
+    { name: 'Falafel Wrap', description: 'Falafel with hummus and fresh vegetables', price: 7.00 }
+]);
+
+// Plates
+insertDishes(52, [
+    { name: 'Chicken Döner Plate', description: 'Chicken döner with rice, salad and sauce', price: 12.50 },
+    { name: 'Beef Döner Plate', description: 'Beef döner with fries and salad', price: 13.00 },
+    { name: 'Köfte Plate', description: 'Grilled beef köfte with rice and vegetables', price: 14.00 }
+]);
+
+// Sides
+insertDishes(53, [
+    { name: 'French Fries', description: 'Crispy fries', price: 4.00 },
+    { name: 'Rice', description: 'Seasoned Turkish rice', price: 3.50 },
+    { name: 'Mixed Salad', description: 'Fresh salad with lemon dressing', price: 4.50 }
+]);
+
+// Drinks
+insertDishes(54, [
+    { name: 'Ayran', description: 'Traditional yogurt drink', price: 3.00 },
+    { name: 'Cola', description: 'Chilled soft drink', price: 3.00 },
+    { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
+]);
 
