@@ -385,6 +385,140 @@ insertDishes(19, [
     { name: 'Oat Milk Latte', description: 'Coffee with oat milk', price: 4.20 }
 ]);
 
+// **** 4. Sakura Central (Japanese) **** //
+
+// Soups
+insertDishes(20, [
+    { name: 'Miso Soup', description: 'Soybean paste soup with tofu and spring onions', price: 4.50 },
+    { name: 'Spicy Miso Soup', description: 'Miso soup with chili oil and vegetables', price: 5.00 },
+    { name: 'Ramen Broth', description: 'Rich pork-based ramen broth', price: 6.00 }
+]);
+
+// Starters
+insertDishes(21, [
+    { name: 'Edamame', description: 'Steamed soybeans with sea salt', price: 5.00 },
+    { name: 'Gyoza', description: 'Pan-fried dumplings filled with pork and vegetables', price: 7.50 },
+    { name: 'Seaweed Salad', description: 'Marinated seaweed with sesame dressing', price: 6.50 }
+]);
+
+// Sushi
+insertDishes(22, [
+    { name: 'California Roll', description: 'Crab, avocado and cucumber roll', price: 9.50 },
+    { name: 'Salmon Nigiri', description: 'Fresh salmon over seasoned sushi rice', price: 10.50 },
+    { name: 'Tuna Nigiri', description: 'Raw tuna over sushi rice', price: 11.00 },
+    { name: 'Dragon Roll', description: 'Eel, cucumber and avocado topped with teriyaki sauce', price: 13.50 }
+]);
+
+// Noodles
+insertDishes(23, [
+    { name: 'Chicken Ramen', description: 'Ramen noodles with chicken, egg and vegetables', price: 12.50 },
+    { name: 'Tonkotsu Ramen', description: 'Pork bone broth with chashu pork', price: 14.00 },
+    { name: 'Udon Noodles', description: 'Thick wheat noodles in light soy broth', price: 11.50 }
+]);
+
+// Rice Dishes
+insertDishes(24, [
+    { name: 'Chicken Teriyaki', description: 'Grilled chicken with teriyaki sauce and rice', price: 13.00 },
+    { name: 'Beef Donburi', description: 'Sliced beef and onions over steamed rice', price: 14.50 },
+    { name: 'Vegetable Donburi', description: 'Seasonal vegetables over rice with soy glaze', price: 11.50 }
+]);
+
+// Desserts
+insertDishes(25, [
+    { name: 'Mochi Ice Cream', description: 'Rice cake filled with ice cream', price: 5.50 },
+    { name: 'Matcha Cheesecake', description: 'Green tea flavored cheesecake', price: 6.50 }
+]);
+
+// Drinks
+insertDishes(26, [
+    { name: 'Green Tea', description: 'Traditional hot Japanese green tea', price: 3.00 },
+    { name: 'Ramune Soda', description: 'Classic Japanese marble soda', price: 4.00 },
+    { name: 'Asahi Beer', description: 'Japanese lager beer', price: 5.00 }
+]);
+
+// **** 5. Burger Werk (Burgers) **** //
+
+// Burgers
+insertDishes(27, [
+    { name: 'Classic Cheeseburger', description: 'Beef patty, cheddar, lettuce, tomato, burger sauce', price: 10.50 },
+    { name: 'Bacon BBQ Burger', description: 'Beef patty, crispy bacon, BBQ sauce, onion rings', price: 12.50 },
+    { name: 'Double Smash Burger', description: 'Two smashed beef patties, double cheese, pickles', price: 14.00 },
+    { name: 'Veggie Burger', description: 'Plant-based patty, avocado, lettuce, vegan sauce', price: 11.50 }
+]);
+
+// Sides
+insertDishes(28, [
+    { name: 'French Fries', description: 'Crispy golden fries', price: 4.00 },
+    { name: 'Sweet Potato Fries', description: 'Sweet potato fries with chipotle dip', price: 5.00 },
+    { name: 'Onion Rings', description: 'Beer-battered onion rings', price: 5.50 }
+]);
+
+// Desserts
+insertDishes(29, [
+    { name: 'Chocolate Brownie', description: 'Warm brownie with chocolate sauce', price: 5.50 },
+    { name: 'Milkshake Vanilla', description: 'Creamy vanilla milkshake', price: 4.50 },
+    { name: 'Milkshake Chocolate', description: 'Chocolate milkshake with whipped cream', price: 4.50 }
+]);
+
+// Drinks
+insertDishes(30, [
+    { name: 'Cola', description: 'Chilled soft drink', price: 3.00 },
+    { name: 'Lemonade', description: 'Fresh sparkling lemonade', price: 3.50 },
+    { name: 'Craft Beer', description: 'Local craft lager', price: 5.50 }
+]);
+
+// **** 6. Bombay Spice (Indian) **** //
+
+// Soups
+insertDishes(31, [
+    { name: 'Lentil Soup', description: 'Spiced red lentil soup with herbs', price: 5.50 },
+    { name: 'Tomato Shorba', description: 'Indian-style tomato soup with cumin', price: 5.00 }
+]);
+
+// Starters
+insertDishes(32, [
+    { name: 'Vegetable Samosa', description: 'Crispy pastry filled with spiced vegetables', price: 6.00 },
+    { name: 'Chicken Pakora', description: 'Deep-fried spiced chicken fritters', price: 7.50 },
+    { name: 'Paneer Tikka', description: 'Grilled marinated paneer cubes', price: 8.00 }
+]);
+
+// Curries
+insertDishes(33, [
+    { name: 'Chicken Tikka Masala', description: 'Creamy tomato curry with grilled chicken', price: 13.50 },
+    { name: 'Butter Chicken', description: 'Mild buttery curry with tender chicken', price: 14.00 },
+    { name: 'Palak Paneer', description: 'Spinach curry with fresh paneer cheese', price: 12.50 },
+    { name: 'Lamb Rogan Josh', description: 'Slow-cooked lamb curry with aromatic spices', price: 15.50 }
+]);
+
+// Rice Dishes
+insertDishes(34, [
+    { name: 'Basmati Rice', description: 'Steamed basmati rice', price: 4.00 },
+    { name: 'Vegetable Biryani', description: 'Spiced rice with mixed vegetables', price: 11.50 },
+    { name: 'Chicken Biryani', description: 'Fragrant rice with spiced chicken', price: 13.00 }
+]);
+
+// Specials
+insertDishes(35, [
+    { name: 'Tandoori Chicken', description: 'Clay oven roasted chicken with spices', price: 15.00 },
+    { name: 'Mixed Grill Platter', description: 'Selection of tandoori meats', price: 18.50 }
+]);
+
+// Desserts
+insertDishes(36, [
+    { name: 'Gulab Jamun', description: 'Milk dumplings in sugar syrup', price: 5.50 },
+    { name: 'Mango Kulfi', description: 'Traditional Indian mango ice cream', price: 6.00 }
+]);
+
+// Drinks
+insertDishes(37, [
+    { name: 'Mango Lassi', description: 'Sweet yogurt drink with mango', price: 4.50 },
+    { name: 'Masala Chai', description: 'Spiced Indian tea with milk', price: 3.50 },
+    { name: 'Mineral Water', description: 'Still or sparkling', price: 2.50 }
+]);
+
+
+
+
 
 
 
