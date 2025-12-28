@@ -79,7 +79,8 @@ const categories = [
     { restaurant_id: 1, name: 'Salads' },
     { restaurant_id: 1, name: 'Pizza' },
     { restaurant_id: 1, name: 'Pasta' },
-    { restaurant_id: 1, name: 'Meat & Fish' },
+    { restaurant_id: 1, name: 'Meat' },
+    { restaurant_id: 1, name: 'Fish' },
     { restaurant_id: 1, name: 'Desserts' },
     { restaurant_id: 1, name: 'Drinks' },
 
@@ -220,5 +221,170 @@ categories.forEach(category => {
     );
 });
 console.log('Categories seeded');
+
+// ********
+// DISHES
+// ********
+
+function insertDishes(categoryId, dishes) {
+    const insertDishesQuery = `
+    INSERT INTO dishes (category_id, name, description, price)
+    VALUES (?, ?, ?, ?)`;
+
+    dishes.forEach(dish => {
+        db.run(
+            insertDishesQuery,
+            [categoryId, dish.name, dish.description, dish.price],
+            (err) => {
+                if (err) {
+                    console.error('Failed to insert dish', err);
+                }
+            }
+        );
+    });
+}
+
+// **** 1. Trattoria Roma (Italian) **** //
+
+// Starters
+insertDishes(1, [
+    { name: 'Bruschetta al Pomodoro', description: 'Grilled bread with tomato, garlic, basil', price: 6.50 },
+    { name: 'Garlic Bread', description: 'Toasted bread with garlic butter', price: 5.90 },
+    { name: 'Antipasto Misto', description: 'Italian cold cuts, cheese, olives', price: 9.90 }
+]);
+
+// Salads
+insertDishes(2, [
+    { name: 'Caprese Salad', description: 'Mozzarella, tomato, basil, olive oil', price: 8.50 },
+    { name: 'Mixed Green Salad', description: 'Seasonal greens with house dressing', price: 6.90 }
+]);
+
+// Pizza
+insertDishes(3, [
+    { name: 'Margherita', description: 'Tomato sauce, mozzarella, basil', price: 9.90 },
+    { name: 'Salami', description: 'Tomato sauce, mozzarella, salami', price: 11.50 },
+    { name: 'Diavola', description: 'Spicy salami, chili, mozzarella', price: 12.50 },
+    { name: 'Quattro Formaggi', description: 'Mozzarella, gorgonzola, parmesan, taleggio', price: 12.90 }
+]);
+
+// Pasta
+insertDishes(4, [
+    { name: 'Spaghetti Carbonara', description: 'Egg, pancetta, parmesan', price: 12.50 },
+    { name: 'Penne Arrabbiata', description: 'Tomato sauce, chili, garlic', price: 10.90 },
+    { name: 'Tagliatelle Bolognese', description: 'Slow-cooked beef ragù', price: 13.50 },
+    { name: 'Lasagna al Forno', description: 'Layered pasta with meat sauce and béchamel', price: 13.90 }
+]);
+
+// Meat
+insertDishes(5, [
+    { name: 'Grilled Chicken Breast', description: 'Served with roasted vegetables', price: 14.90 },
+    { name: 'Veal Scaloppine al Limone', description: 'Veal in lemon butter sauce', price: 17.50 },
+    { name: 'Beef Tagliata', description: 'Grilled beef slices with arugula and parmesan', price: 19.90 }
+]);
+
+// Fish
+insertDishes(6, [
+    { name: 'Gilthead Seabream', description: 'Grilled seabream with lemon and herbs', price: 18.90 },
+    { name: 'Grilled Calamari', description: 'Calamari with garlic, olive oil, and lemon', price: 16.50 },
+    { name: 'Mussels in White Wine', description: 'Mussels cooked in white wine and garlic', price: 15.90 }
+]);
+
+// Desserts
+insertDishes(7, [
+    { name: 'Tiramisu', description: 'Classic Italian coffee dessert', price: 6.50 },
+    { name: 'Panna Cotta', description: 'Vanilla cream with berry sauce', price: 6.90 },
+    { name: 'Chocolate Lava Cake', description: 'Warm chocolate cake with liquid center', price: 7.50 }
+]);
+
+// Drinks
+insertDishes(8, [
+    { name: 'Mineral Water', description: 'Still or sparkling', price: 3.50 },
+    { name: 'Coca-Cola', description: '0.33l bottle', price: 3.90 },
+    { name: 'House Red Wine', description: '0.2l glass', price: 4.90 },
+    { name: 'House White Wine', description: '0.2l glass', price: 4.90 }
+]);
+
+
+// **** 2. Wiener Stube (Austrian) **** //
+
+// Soups
+insertDishes(9, [
+    { name: 'Beef Soup with Noodles', description: 'Clear beef broth with fine noodles', price: 5.90 },
+    { name: 'Goulash Soup', description: 'Hearty beef soup with paprika', price: 6.90 },
+    { name: 'Cream of Pumpkin Soup', description: 'Pumpkin soup with cream', price: 5.50 }
+]);
+
+// Starters
+insertDishes(10, [
+    { name: 'Cheese Dumplings', description: 'Fried cheese dumplings with salad', price: 7.90 },
+    { name: 'Viennese Potato Salad', description: 'Potato salad with vinegar dressing', price: 4.90 }
+]);
+
+// Main Dishes
+insertDishes(11, [
+    { name: 'Boiled Beef (Tafelspitz)', description: 'Boiled beef with horseradish and potatoes', price: 16.90 },
+    { name: 'Viennese Goulash', description: 'Beef goulash with bread dumpling', price: 14.90 },
+    { name: 'Roast Pork', description: 'Roast pork with sauerkraut and dumpling', price: 15.50 }
+]);
+
+// Schnitzel
+insertDishes(12, [
+    { name: 'Viennese Schnitzel', description: 'Breaded veal schnitzel with potatoes', price: 19.90 },
+    { name: 'Pork Schnitzel', description: 'Breaded pork schnitzel with fries', price: 15.90 },
+    { name: 'Chicken Schnitzel', description: 'Breaded chicken schnitzel with salad', price: 14.90 }
+]);
+
+// Desserts
+insertDishes(13, [
+    { name: 'Apple Strudel', description: 'Apple pastry with vanilla sauce', price: 6.50 },
+    { name: 'Kaiserschmarrn', description: 'Shredded pancake with plum compote', price: 7.90 },
+    { name: 'Sachertorte', description: 'Chocolate cake with apricot jam', price: 6.90 }
+]);
+
+// Drinks
+insertDishes(14, [
+    { name: 'Mineral Water', description: 'Still or sparkling', price: 3.50 },
+    { name: 'Apple Juice', description: 'Natural apple juice', price: 3.90 },
+    { name: 'Beer', description: '0.5l Austrian beer', price: 4.50 },
+    { name: 'Spritzer', description: 'White wine with sparkling water', price: 4.90 }
+]);
+
+
+// **** 3. Green Bowl (Vegetarian) **** //
+
+// Bowls
+insertDishes(15, [
+    { name: 'Quinoa Power Bowl', description: 'Quinoa, roasted vegetables, hummus', price: 11.90 },
+    { name: 'Avocado Buddha Bowl', description: 'Avocado, chickpeas, brown rice, tahini', price: 12.50 },
+    { name: 'Falafel Bowl', description: 'Falafel, couscous, salad, yogurt sauce', price: 11.50 }
+]);
+
+// Salads
+insertDishes(16, [
+    { name: 'Green Garden Salad', description: 'Mixed greens, cucumber, seeds', price: 8.90 },
+    { name: 'Goat Cheese Salad', description: 'Goat cheese, walnuts, honey dressing', price: 10.90 }
+]);
+
+// Warm Dishes
+insertDishes(17, [
+    { name: 'Vegetable Curry', description: 'Seasonal vegetables in coconut curry', price: 12.90 },
+    { name: 'Spinach Lasagna', description: 'Vegetarian lasagna with spinach and ricotta', price: 13.50 },
+    { name: 'Stuffed Bell Peppers', description: 'Peppers filled with rice and vegetables', price: 11.90 }
+]);
+
+// Desserts
+insertDishes(18, [
+    { name: 'Vegan Chocolate Cake', description: 'Dark chocolate cake without dairy', price: 5.90 },
+    { name: 'Chia Pudding', description: 'Chia seeds with coconut milk and berries', price: 5.50 }
+]);
+
+// Drinks
+insertDishes(19, [
+    { name: 'Homemade Lemonade', description: 'Fresh lemon and mint', price: 4.50 },
+    { name: 'Ginger Tea', description: 'Fresh ginger infusion', price: 3.90 },
+    { name: 'Oat Milk Latte', description: 'Coffee with oat milk', price: 4.20 }
+]);
+
+
 
 
