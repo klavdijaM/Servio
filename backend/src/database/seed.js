@@ -766,3 +766,102 @@ insertDishes(71, [
     { name: 'Herbal Tea', description: 'Selection of herbal teas', price: 3.00 },
     { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
 ]);
+
+// **** 13. Istanbul Grill (Kebab) **** //
+
+
+// Kebap
+insertDishes(72, [
+    { name: 'Adana Kebap', description: 'Spicy minced lamb kebap grilled over charcoal', price: 12.50 },
+    { name: 'Urfa Kebap', description: 'Mild minced meat kebap with herbs', price: 12.00 },
+    { name: 'Chicken Shish', description: 'Grilled chicken skewers with spices', price: 11.50 }
+]);
+
+// Wraps
+insertDishes(73, [
+    { name: 'Adana Wrap', description: 'Adana kebap wrapped in flatbread with salad', price: 8.50 },
+    { name: 'Chicken Shish Wrap', description: 'Chicken skewer wrap with garlic sauce', price: 8.00 },
+    { name: 'Halloumi Wrap', description: 'Grilled halloumi with vegetables', price: 7.50 }
+]);
+
+// Plates
+insertDishes(74, [
+    { name: 'Mixed Grill Plate', description: 'Selection of kebaps with rice and salad', price: 16.50 },
+    { name: 'Adana Plate', description: 'Adana kebap served with bulgur and grilled vegetables', price: 14.50 },
+    { name: 'Chicken Shish Plate', description: 'Chicken skewers with rice and yogurt sauce', price: 13.50 }
+]);
+
+// Sides
+insertDishes(75, [
+    { name: 'Bulgur', description: 'Seasoned bulgur wheat', price: 3.50 },
+    { name: 'Grilled Vegetables', description: 'Char-grilled seasonal vegetables', price: 4.50 },
+    { name: 'Shepherd Salad', description: 'Tomatoes, cucumber, onions and parsley', price: 4.00 }
+]);
+
+// Drinks
+insertDishes(76, [
+    { name: 'Ayran', description: 'Traditional yogurt drink', price: 3.00 },
+    { name: 'Turkish Tea', description: 'Strong black tea served hot', price: 2.50 },
+    { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
+]);
+
+// **** 14. Factory Bites (Fast Food) **** //
+
+// Fast Food
+insertDishes(77, [
+    { name: 'Cheeseburger', description: 'Beef patty, cheese, pickles and sauce', price: 8.50 },
+    { name: 'Chicken Nuggets (8 pcs)', description: 'Crispy breaded chicken nuggets', price: 7.50 },
+    { name: 'Hot Dog', description: 'Sausage in bun with mustard and ketchup', price: 6.50 },
+    { name: 'Veggie Burger', description: 'Plant-based patty with lettuce and sauce', price: 8.00 }
+]);
+
+// Sides
+insertDishes(78, [
+    { name: 'French Fries', description: 'Classic crispy fries', price: 3.50 },
+    { name: 'Curly Fries', description: 'Seasoned spiral fries', price: 4.00 },
+    { name: 'Mozzarella Sticks', description: 'Fried mozzarella with dip', price: 5.50 }
+]);
+
+// Desserts
+insertDishes(79, [
+    { name: 'Chocolate Donut', description: 'Donut with chocolate glaze', price: 3.00 },
+    { name: 'Ice Cream Cup', description: 'Vanilla ice cream with chocolate sauce', price: 3.50 }
+]);
+
+// Drinks
+insertDishes(80, [
+    { name: 'Cola', description: 'Chilled soft drink', price: 3.00 },
+    { name: 'Orange Soda', description: 'Sparkling orange drink', price: 3.00 },
+    { name: 'Milkshake Strawberry', description: 'Creamy strawberry milkshake', price: 4.50 }
+]);
+
+// **** 15. Grill Station (Burgers) **** //
+
+// Grill
+insertDishes(81, [
+    { name: 'Grilled Beef Burger', description: 'Grilled beef patty, cheddar, lettuce, tomato', price: 11.50 },
+    { name: 'BBQ Bacon Burger', description: 'Beef patty, bacon, BBQ sauce, onion', price: 13.00 },
+    { name: 'Grilled Chicken Burger', description: 'Grilled chicken breast with herb mayo', price: 11.00 },
+    { name: 'Veggie Grill Burger', description: 'Grilled vegetable patty with avocado', price: 11.50 }
+]);
+
+// Sides
+insertDishes(82, [
+    { name: 'Steak Fries', description: 'Thick-cut grilled-style fries', price: 4.50 },
+    { name: 'Grilled Corn', description: 'Corn on the cob with butter', price: 4.00 },
+    { name: 'Coleslaw', description: 'Creamy cabbage salad', price: 3.50 }
+]);
+
+// Desserts
+insertDishes(83, [
+    { name: 'Cheesecake', description: 'Classic cheesecake with berry topping', price: 6.50 },
+    { name: 'Brownie with Ice Cream', description: 'Warm brownie served with vanilla ice cream', price: 7.00 }
+]);
+
+// Drinks
+insertDishes(84, [
+    { name: 'Cola', description: 'Chilled soft drink', price: 3.00 },
+    { name: 'Craft Beer', description: 'Local craft beer', price: 5.50 },
+    { name: 'Iced Tea', description: 'House-made iced tea', price: 3.50 }
+]);
+
