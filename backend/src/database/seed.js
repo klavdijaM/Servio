@@ -685,6 +685,7 @@ insertDishes(59, [
     { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
 ]);
 
+
 // **** 11. Pho Saigon (Asian) **** //
 
 // Soups
@@ -732,6 +733,7 @@ insertDishes(66, [
     { name: 'Lychee Juice', description: 'Sweet lychee fruit drink', price: 3.50 }
 ]);
 
+
 // **** 12. Veggie South (Vegetarian) **** //
 
 // Bowls
@@ -767,8 +769,8 @@ insertDishes(71, [
     { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
 ]);
 
-// **** 13. Istanbul Grill (Kebab) **** //
 
+// **** 13. Istanbul Grill (Kebab) **** //
 
 // Kebap
 insertDishes(72, [
@@ -805,6 +807,7 @@ insertDishes(76, [
     { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
 ]);
 
+
 // **** 14. Factory Bites (Fast Food) **** //
 
 // Fast Food
@@ -835,6 +838,7 @@ insertDishes(80, [
     { name: 'Milkshake Strawberry', description: 'Creamy strawberry milkshake', price: 4.50 }
 ]);
 
+
 // **** 15. Grill Station (Burgers) **** //
 
 // Grill
@@ -864,4 +868,95 @@ insertDishes(84, [
     { name: 'Craft Beer', description: 'Local craft beer', price: 5.50 },
     { name: 'Iced Tea', description: 'House-made iced tea', price: 3.50 }
 ]);
+
+
+// **** 16. Pasta Depot (Italian) **** //
+
+// Starters
+insertDishes(85, [
+    { name: 'Bruschetta Classica', description: 'Toasted bread with tomato, garlic and basil', price: 6.00 },
+    { name: 'Garlic Bread', description: 'Oven-baked bread with garlic butter', price: 5.50 }
+]);
+
+// Pasta
+insertDishes(86, [
+    { name: 'Spaghetti Carbonara', description: 'Egg, pancetta, parmesan, black pepper', price: 12.50 },
+    { name: 'Penne Arrabbiata', description: 'Spicy tomato sauce with garlic and chili', price: 10.90 },
+    { name: 'Tagliatelle Bolognese', description: 'Slow-cooked beef ragù', price: 13.50 },
+    { name: 'Spaghetti Vongole', description: 'Clams, white wine, garlic and parsley', price: 14.90 },
+    { name: 'Lasagna al Forno', description: 'Baked pasta with meat sauce and béchamel', price: 13.90 }
+]);
+
+// Salads
+insertDishes(87, [
+    { name: 'Caprese Salad', description: 'Mozzarella, tomato, basil, olive oil', price: 8.50 },
+    { name: 'Rocket Parmesan Salad', description: 'Arugula with shaved parmesan and lemon dressing', price: 7.90 }
+]);
+
+// Desserts
+insertDishes(88, [
+    { name: 'Tiramisu', description: 'Classic espresso dessert with mascarpone', price: 6.50 },
+    { name: 'Panna Cotta', description: 'Vanilla cream with berry sauce', price: 6.00 },
+    { name: 'Chocolate Lava Cake', description: 'Warm chocolate cake with liquid center', price: 7.50 }
+]);
+
+// Drinks
+insertDishes(89, [
+    { name: 'Sparkling Water', description: 'Italian mineral water', price: 3.50 },
+    { name: 'Cola', description: 'Chilled soft drink', price: 3.00 },
+    { name: 'House Red Wine (0.2l)', description: 'Italian red table wine', price: 5.50 },
+    { name: 'Espresso', description: 'Strong Italian espresso', price: 2.50 }
+]);
+
+
+// **** 17. Curry Factory (Indian) **** //
+
+// Soups
+insertDishes(90, [
+    { name: 'Dal Soup', description: 'Spiced lentil soup with cumin and garlic', price: 5.50 },
+    { name: 'Tomato Shorba', description: 'Indian-style tomato soup with herbs', price: 5.00 }
+]);
+
+// Starters
+insertDishes(91, [
+    { name: 'Vegetable Samosa', description: 'Crispy pastry filled with spiced potatoes and peas', price: 6.00 },
+    { name: 'Chicken Pakora', description: 'Deep-fried spiced chicken fritters', price: 7.50 },
+    { name: 'Paneer Tikka', description: 'Grilled marinated paneer cheese', price: 8.00 }
+]);
+
+// Curries
+insertDishes(92, [
+    { name: 'Chicken Tikka Masala', description: 'Creamy tomato curry with grilled chicken', price: 13.50 },
+    { name: 'Butter Chicken', description: 'Rich buttery curry with tender chicken', price: 14.00 },
+    { name: 'Palak Paneer', description: 'Spinach curry with fresh paneer cheese', price: 12.50 },
+    { name: 'Lamb Rogan Josh', description: 'Slow-cooked lamb curry with aromatic spices', price: 15.90 }
+]);
+
+// Rice Dishes
+insertDishes(93, [
+    { name: 'Plain Basmati Rice', description: 'Steamed long-grain basmati rice', price: 4.00 },
+    { name: 'Vegetable Biryani', description: 'Fragrant rice with mixed vegetables and spices', price: 11.50 },
+    { name: 'Chicken Biryani', description: 'Spiced rice with marinated chicken', price: 13.00 }
+]);
+
+// Specials
+insertDishes(94, [
+    { name: 'Tandoori Chicken', description: 'Clay oven roasted chicken with spices', price: 15.50 },
+    { name: 'Mixed Grill Platter', description: 'Selection of tandoori meats', price: 18.90 }
+]);
+
+// Desserts
+insertDishes(95, [
+    { name: 'Gulab Jamun', description: 'Milk dumplings in sugar syrup', price: 5.50 },
+    { name: 'Mango Kulfi', description: 'Traditional Indian mango ice cream', price: 6.00 }
+]);
+
+// Drinks
+insertDishes(96, [
+    { name: 'Mango Lassi', description: 'Sweet yogurt drink with mango', price: 4.50 },
+    { name: 'Masala Chai', description: 'Spiced Indian tea with milk', price: 3.50 },
+    { name: 'Mineral Water', description: 'Still or sparkling', price: 2.50 }
+]);
+
+
 
