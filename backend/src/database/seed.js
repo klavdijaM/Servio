@@ -385,6 +385,7 @@ insertDishes(19, [
     { name: 'Oat Milk Latte', description: 'Coffee with oat milk', price: 4.20 }
 ]);
 
+
 // **** 4. Sakura Central (Japanese) **** //
 
 // Soups
@@ -436,6 +437,7 @@ insertDishes(26, [
     { name: 'Asahi Beer', description: 'Japanese lager beer', price: 5.00 }
 ]);
 
+
 // **** 5. Burger Werk (Burgers) **** //
 
 // Burgers
@@ -466,6 +468,7 @@ insertDishes(30, [
     { name: 'Lemonade', description: 'Fresh sparkling lemonade', price: 3.50 },
     { name: 'Craft Beer', description: 'Local craft lager', price: 5.50 }
 ]);
+
 
 // **** 6. Bombay Spice (Indian) **** //
 
@@ -556,6 +559,7 @@ insertDishes(42, [
     { name: 'Red Wine (0.2l)', description: 'House Italian red wine', price: 5.50 }
 ]);
 
+
 // **** 8. Asia Wok Express (Asian) **** //
 
 // Soups
@@ -607,6 +611,7 @@ insertDishes(49, [
     { name: 'Coconut Water', description: 'Natural coconut water', price: 4.00 }
 ]);
 
+
 // **** 9. Anatolia Kebap (Kebab) **** //
 
 // Kebap
@@ -644,3 +649,120 @@ insertDishes(54, [
     { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
 ]);
 
+
+// **** 10. Schnitzel Haus (Austrian) **** //
+
+// Soups
+insertDishes(55, [
+    { name: 'Beef Broth with Pancake Strips', description: 'Clear beef soup with sliced pancakes', price: 5.50 },
+    { name: 'Goulash Soup', description: 'Hearty beef goulash soup with paprika', price: 6.50 }
+]);
+
+// Main Dishes
+insertDishes(56, [
+    { name: 'Tafelspitz', description: 'Boiled beef with apple-horseradish and potatoes', price: 16.50 },
+    { name: 'Zwiebelrostbraten', description: 'Roast beef with fried onions and gravy', price: 17.00 },
+    { name: 'Käsespätzle', description: 'Cheese spaetzle with crispy onions', price: 13.50 }
+]);
+
+// Schnitzel
+insertDishes(57, [
+    { name: 'Wiener Schnitzel', description: 'Breaded veal schnitzel with parsley potatoes', price: 19.50 },
+    { name: 'Pork Schnitzel', description: 'Breaded pork schnitzel with fries', price: 14.50 },
+    { name: 'Chicken Schnitzel', description: 'Breaded chicken schnitzel with rice', price: 15.00 }
+]);
+
+// Desserts
+insertDishes(58, [
+    { name: 'Apple Strudel', description: 'Traditional apple strudel with vanilla sauce', price: 6.50 },
+    { name: 'Kaiserschmarrn', description: 'Fluffy shredded pancake with plum compote', price: 7.50 }
+]);
+
+// Drinks
+insertDishes(59, [
+    { name: 'Almdudler', description: 'Austrian herbal lemonade', price: 3.50 },
+    { name: 'Beer (0.5l)', description: 'Austrian lager beer', price: 5.00 },
+    { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
+]);
+
+// **** 11. Pho Saigon (Asian) **** //
+
+// Soups
+insertDishes(60, [
+    { name: 'Tom Yum Soup', description: 'Spicy and sour soup with herbs and vegetables', price: 6.00 },
+    { name: 'Chicken Clear Soup', description: 'Light broth with chicken and spring onions', price: 5.50 }
+]);
+
+// Starters
+insertDishes(61, [
+    { name: 'Fresh Summer Rolls', description: 'Rice paper rolls with vegetables and herbs', price: 6.50 },
+    { name: 'Crispy Spring Rolls', description: 'Fried rolls filled with meat and vegetables', price: 6.00 },
+    { name: 'Vietnamese Dumplings', description: 'Steamed dumplings with pork filling', price: 7.00 }
+]);
+
+// Pho
+insertDishes(62, [
+    { name: 'Pho Bo', description: 'Beef noodle soup with herbs and rice noodles', price: 13.00 },
+    { name: 'Pho Ga', description: 'Chicken noodle soup with aromatic broth', price: 12.50 },
+    { name: 'Vegetarian Pho', description: 'Vegetable broth with tofu and rice noodles', price: 11.50 }
+]);
+
+// Rice Dishes
+insertDishes(63, [
+    { name: 'Grilled Chicken with Rice', description: 'Marinated grilled chicken served with jasmine rice', price: 12.50 },
+    { name: 'Beef Lemongrass Rice', description: 'Stir-fried beef with lemongrass and rice', price: 13.50 }
+]);
+
+// Specials
+insertDishes(64, [
+    { name: 'Bun Cha', description: 'Grilled pork with vermicelli noodles and herbs', price: 14.00 },
+    { name: 'Caramelized Fish', description: 'Fish fillet in caramelized sauce with rice', price: 15.00 }
+]);
+
+// Desserts
+insertDishes(65, [
+    { name: 'Mango Sticky Rice', description: 'Sticky rice with mango and coconut milk', price: 6.50 },
+    { name: 'Coconut Tapioca', description: 'Warm coconut dessert with tapioca pearls', price: 6.00 }
+]);
+
+// Drinks
+insertDishes(66, [
+    { name: 'Vietnamese Iced Coffee', description: 'Strong coffee with condensed milk', price: 4.50 },
+    { name: 'Jasmine Tea', description: 'Hot jasmine tea', price: 3.00 },
+    { name: 'Lychee Juice', description: 'Sweet lychee fruit drink', price: 3.50 }
+]);
+
+// **** 12. Veggie South (Vegetarian) **** //
+
+// Bowls
+insertDishes(67, [
+    { name: 'Buddha Bowl', description: 'Quinoa, roasted vegetables, hummus and tahini', price: 11.50 },
+    { name: 'Falafel Bowl', description: 'Falafel, couscous, salad and yogurt sauce', price: 12.00 },
+    { name: 'Avocado Power Bowl', description: 'Brown rice, avocado, chickpeas and greens', price: 12.50 }
+]);
+
+// Salads
+insertDishes(68, [
+    { name: 'Mediterranean Salad', description: 'Tomatoes, cucumber, olives, feta cheese', price: 9.50 },
+    { name: 'Green Detox Salad', description: 'Mixed greens, apple, nuts and lemon dressing', price: 10.00 }
+]);
+
+// Warm Dishes
+insertDishes(69, [
+    { name: 'Vegetable Curry', description: 'Seasonal vegetables in mild coconut curry', price: 12.50 },
+    { name: 'Stuffed Bell Peppers', description: 'Peppers filled with rice and vegetables', price: 11.50 },
+    { name: 'Lentil Stew', description: 'Hearty lentil stew with herbs and bread', price: 10.50 }
+]);
+
+// Desserts
+insertDishes(70, [
+    { name: 'Vegan Chocolate Cake', description: 'Rich chocolate cake without animal products', price: 6.50 },
+    { name: 'Chia Pudding', description: 'Chia seeds with almond milk and berries', price: 5.50 }
+]);
+
+// Drinks
+insertDishes(71, [
+    { name: 'Fresh Orange Juice', description: 'Freshly squeezed orange juice', price: 4.50 },
+    { name: 'Herbal Tea', description: 'Selection of herbal teas', price: 3.00 },
+    { name: 'Mineral Water', description: 'Still or sparkling water', price: 2.50 }
+]);
