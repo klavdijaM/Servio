@@ -964,6 +964,8 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
         {name: 'Masala Chai', description: 'Spiced Indian tea with milk', price: 3.50},
         {name: 'Mineral Water', description: 'Still or sparkling', price: 2.50}
     ]);
+    console.log('Dishes seeded');
+
 
 })
 

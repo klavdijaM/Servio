@@ -19,10 +19,11 @@ const db = new sqlite3.Database(dbPath, (err) => {
     db.exec(schema, (err) => {
         if (err) {
             console.error('Failed to execute schema', err);
-        } else {
-            console.log('Database schema executed successfully');
+            return;
         }
-    })
-})
+        console.log('Database schema executed successfully');
+        require('./seed');
+    });
+});
 
 module.exports = db;
