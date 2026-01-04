@@ -964,7 +964,37 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
         {name: 'Masala Chai', description: 'Spiced Indian tea with milk', price: 3.50},
         {name: 'Mineral Water', description: 'Still or sparkling', price: 2.50}
     ]);
-    console.log('Dishes seeded');
+    console.log('Dishes seeded')
+
+
+// ********
+// VOUCHERS
+// ********
+
+    const vouchers = [
+        {code: 'WELCOME10', discount_type: 'percentage', discount_value: 10},
+        {code: 'FREESHIP', discount_type: 'fixed', discount_value: 4},
+        {code: 'SAVE5', discount_type: 'fixed', discount_value: 5},
+        {code: 'PROMO15', discount_type: 'percentage', discount_value: 15},
+        {code: 'EXPIRED10', discount_type: 'percentage', discount_value: 10, is_active: 0}
+    ];
+
+    const insertVoucherQuery = `
+    INSERT INTO vouchers (code, discount_type, discount_value, is_active)
+    VALUES (?, ?, ?, ?)`
+
+    vouchers.forEach(voucher => {
+        db.run(
+            insertVoucherQuery,
+            [voucher.code, voucher.discount_type, voucher.discount_value, voucher.is_active ?? 1],
+            (err) => {
+                if (err) {
+                    console.error('Failed to insert voucher', err);
+                }
+            }
+        );
+    });
+    console.log('Vouchers seeded');
 
 
 })
