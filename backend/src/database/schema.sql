@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS restaurants (
     name TEXT NOT NULL,
     cuisine TEXT NOT NULL,
     delivery_zone_id INTEGER NOT NULL,
+    delivery_fee REAL NOT NULL DEFAULT 0,
     is_approved INTEGER DEFAULT 1,
     FOREIGN KEY (delivery_zone_id) REFERENCES delivery_zones(id)
 );

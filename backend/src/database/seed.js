@@ -34,36 +34,40 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
 // RESTAURANTS
 // ********
     const restaurants = [
-        {name: 'Trattoria Roma', cuisine: 'Italian', delivery_zone_id: 1},
-        {name: 'Wiener Stube', cuisine: 'Austrian', delivery_zone_id: 1},
-        {name: 'Green Bowl', cuisine: 'Vegetarian', delivery_zone_id: 1},
-        {name: 'Sakura Central', cuisine: 'Japanese', delivery_zone_id: 1},
+        // Zone 1 – Central
+        { name: 'Trattoria Roma', cuisine: 'Italian', delivery_zone_id: 1, delivery_fee: 0 },
+        { name: 'Wiener Stube', cuisine: 'Austrian', delivery_zone_id: 1, delivery_fee: 0 },
+        { name: 'Green Bowl', cuisine: 'Vegetarian', delivery_zone_id: 1, delivery_fee: 1.49 },
+        { name: 'Sakura Central', cuisine: 'Japanese', delivery_zone_id: 1, delivery_fee: 2.49 },
 
-        {name: 'Burger Werk', cuisine: 'Burgers', delivery_zone_id: 2},
-        {name: 'Bombay Spice', cuisine: 'Indian', delivery_zone_id: 2},
-        {name: 'Pizza Nord', cuisine: 'Italian', delivery_zone_id: 2},
-        {name: 'Asia Wok Express', cuisine: 'Asian', delivery_zone_id: 2},
-        {name: 'Anatolia Kebap', cuisine: 'Kebab', delivery_zone_id: 2},
+        // Zone 2 – North
+        { name: 'Burger Werk', cuisine: 'Burgers', delivery_zone_id: 2, delivery_fee: 1.99 },
+        { name: 'Bombay Spice', cuisine: 'Indian', delivery_zone_id: 2, delivery_fee: 2.99 },
+        { name: 'Pizza Nord', cuisine: 'Italian', delivery_zone_id: 2, delivery_fee: 0 },
+        { name: 'Asia Wok Express', cuisine: 'Asian', delivery_zone_id: 2, delivery_fee: 2.49 },
+        { name: 'Anatolia Kebap', cuisine: 'Kebab', delivery_zone_id: 2, delivery_fee: 1.99 },
 
-        {name: 'Schnitzel Haus', cuisine: 'Austrian', delivery_zone_id: 3},
-        {name: 'Pho Saigon', cuisine: 'Asian', delivery_zone_id: 3},
-        {name: 'Veggie South', cuisine: 'Vegetarian', delivery_zone_id: 3},
-        {name: 'Istanbul Grill', cuisine: 'Kebab', delivery_zone_id: 3},
+        // Zone 3 – South
+        { name: 'Schnitzel Haus', cuisine: 'Austrian', delivery_zone_id: 3, delivery_fee: 2.99 },
+        { name: 'Pho Saigon', cuisine: 'Asian', delivery_zone_id: 3, delivery_fee: 2.49 },
+        { name: 'Veggie South', cuisine: 'Vegetarian', delivery_zone_id: 3, delivery_fee: 0 },
+        { name: 'Istanbul Grill', cuisine: 'Kebab', delivery_zone_id: 3, delivery_fee: 2.99 },
 
-        {name: 'Factory Bites', cuisine: 'Fast Food', delivery_zone_id: 4},
-        {name: 'Grill Station', cuisine: 'Burgers', delivery_zone_id: 4},
-        {name: 'Pasta Depot', cuisine: 'Italian', delivery_zone_id: 4},
-        {name: 'Curry Factory', cuisine: 'Indian', delivery_zone_id: 4}
+        // Zone 4 – Industrial
+        { name: 'Factory Bites', cuisine: 'Fast Food', delivery_zone_id: 4, delivery_fee: 3.49 },
+        { name: 'Grill Station', cuisine: 'Burgers', delivery_zone_id: 4, delivery_fee: 3.99 },
+        { name: 'Pasta Depot', cuisine: 'Italian', delivery_zone_id: 4, delivery_fee: 2.99 },
+        { name: 'Curry Factory', cuisine: 'Indian', delivery_zone_id: 4, delivery_fee: 3.49 }
     ];
 
     const insertRestaurantQuery = `
-        INSERT INTO restaurants (name, cuisine, delivery_zone_id)
-        VALUES (?, ?, ?)`;
+        INSERT INTO restaurants (name, cuisine, delivery_zone_id, delivery_fee)
+        VALUES (?, ?, ?, ?)`;
 
     restaurants.forEach(restaurant => {
         db.run(
             insertRestaurantQuery,
-            [restaurant.name, restaurant.cuisine, restaurant.delivery_zone_id],
+            [restaurant.name, restaurant.cuisine, restaurant.delivery_zone_id, restaurant.delivery_fee],
             (err) => {
                 if (err) {
                     console.error('Failed to insert restaurant', err);
