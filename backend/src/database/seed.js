@@ -4,6 +4,7 @@ db.run('PRAGMA foreign_keys = ON'); // enforces defined foreign key rules
 
 db.serialize(() => { // executes SQL commands in order, no skipping ahead while waiting
 
+
 // ********
 // DELIVERY ZONES
 // ********
@@ -29,6 +30,7 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
             });
     });
     console.log('Delivery zones seeded');
+
 
 // ********
 // RESTAURANTS
@@ -60,7 +62,6 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
         { name: 'Curry Factory', cuisine: 'Indian', delivery_zone_id: 4, delivery_fee: 3.49, minimum_order_value: 18 }
     ];
 
-
     const insertRestaurantQuery = `
         INSERT INTO restaurants (name, cuisine, delivery_zone_id, delivery_fee, minimum_order_value)
         VALUES (?, ?, ?, ?, ?)`;
@@ -77,6 +78,7 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
         );
     });
     console.log('Restaurants seeded');
+
 
 // ********
 // CATEGORIES
@@ -229,6 +231,7 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
         );
     });
     console.log('Categories seeded');
+
 
 // ********
 // DISHES
@@ -978,7 +981,7 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
 
     const vouchers = [
         {code: 'WELCOME10', discount_type: 'percentage', discount_value: 10},
-        {code: 'FREESHIP', discount_type: 'fixed', discount_value: 4},
+        {code: 'FREESHIP', discount_type: 'free_delivery', discount_value: 0},
         {code: 'SAVE5', discount_type: 'fixed', discount_value: 5},
         {code: 'PROMO15', discount_type: 'percentage', discount_value: 15},
         {code: 'EXPIRED10', discount_type: 'percentage', discount_value: 10, is_active: 0}
@@ -1000,8 +1003,7 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
         );
     });
     console.log('Vouchers seeded');
-
-
+    
 })
 
 
