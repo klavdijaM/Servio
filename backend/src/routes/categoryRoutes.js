@@ -6,6 +6,6 @@ const router = express.Router();
 const { getCategoriesByRestaurant } = require('../controllers/categoryController');
 
 // GET /restaurants/:restaurantId/categories
-router.get('/:restaurant_id/categories', getCategoriesByRestaurant); // when a get request matches the URL pattern, call the func
+router.get('/:restaurantId/categories', getCategoriesByRestaurant); // when a get request matches the URL pattern, call the func
 
 module.exports = router;
