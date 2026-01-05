@@ -10,7 +10,7 @@ app.get('/health', (req, res) => {
     res.json({status: 'OK'});
 })
 
-app.use('/restaurants', restaurantRoutes);
+app.use('/restaurants', restaurantRoutes); // send any request starting with /restaurants to restaurantRoutes
 
 module.exports = app; // allows other files to use this backend definition
 
