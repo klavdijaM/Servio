@@ -1,13 +1,20 @@
 // handles response logic when requests come in
-const restaurants = [
-    { id: 1, name: 'Pizza Palace', cuisine: 'Italian', deliveryTime: 30 },
-    { id: 2, name: 'Sushi World', cuisine: 'Japanese', deliveryTime: 45 },
-    { id: 3, name: 'Burger House', cuisine: 'American', deliveryTime: 25 }
-];
+const db = require('../database/db');
 
+// GET /restaurants => returns all restaurants
 function getRestaurants(req, res) {
-    res.json(restaurants);
-}
 
-module.exports = { getRestaurants };
+    const query = `
+    SELECT id, name, cuisine, delivery_fee, minimum_order_value
+    FROM restaurants
+    WHERE is_approved = 1
+    `;
+
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database Error' });
+        }
+        res.json(rows);
+    })
+}
 

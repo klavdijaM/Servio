@@ -1003,7 +1003,7 @@ db.serialize(() => { // executes SQL commands in order, no skipping ahead while 
         );
     });
     console.log('Vouchers seeded');
-    
+
 })
 
 
