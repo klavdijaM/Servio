@@ -96,7 +96,33 @@ function getOrderById(req, res) {
     );
 }
 
+// GET /orders => returns all orders for a user
+function getOrdersByUser(req, res) {
+    const userId = req.query.userId; //GET /orders?userId=5
+
+    if(!userId) {
+        return res.status(400).json({error: 'User ID is required'});
+    }
+
+    const query = `
+    SELECT o.id, o.restaurant_id, o.status, o.created_at, COUNT(oi.id) AS total_items
+    FROM orders o
+    LEFT JOIN order_items oi ON oi.order_id = o.id
+    WHERE o.user_id = ?
+    GROUP BY o.id -- collapses all rows with the same order id into one row
+    ORDER BY o.created_at DESC`;
+
+    db.all(query, [userId], (err,orders) => {
+        if (err) {
+            return res.status(500).json({error: 'Database error'});
+        }
+        res.json(orders);
+    })
+
+}
+
 module.exports = {
     createOrder,
-    getOrderById
+    getOrderById,
+    getOrdersByUser,
 };
