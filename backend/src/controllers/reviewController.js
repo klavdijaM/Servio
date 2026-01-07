@@ -18,7 +18,7 @@ function createReview(req, res) {
     db.run(
         query,
         [userId, restaurantId, rating, comment ?? null],
-        (err, review) => {
+        (err) => {
             if (err) {
                 return res.status(400).json({error: 'Failed to create review'});
             }
@@ -26,4 +26,29 @@ function createReview(req, res) {
             res.status(201).json({message: 'Review created'});
         }
     );
+}
+
+// GET /restaurants/:id/reviews => returns reviews for a single restaurant
+function getReviewsByRestaurant(req, res) {
+    const restaurantId = req.params.id;
+
+    const query = `
+    SELECT r.id, r.rating, r.comment, r.created_at, u.email AS user_email
+    FROM reviews r
+    JOIN users u ON u.id = r.user_id --finds the user whose users.id matches reviews.user_id, and attaches their data to the same row
+    WHERE r.restaurant_id = ?
+    ORDER BY r.created_at DESC`
+
+    db.all(query, [restaurantId], (err, reviews) => {
+        if (err) {
+            return res.status(500).json({error: 'Database error'});
+        }
+
+        res.json(reviews);
+    });
+}
+
+module.exports = {
+    createReview,
+    getReviewsByRestaurant,
 }

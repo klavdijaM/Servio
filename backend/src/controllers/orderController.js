@@ -109,7 +109,7 @@ function getOrdersByUser(req, res) {
     FROM orders o
     LEFT JOIN order_items oi ON oi.order_id = o.id
     WHERE o.user_id = ?
-    GROUP BY o.id -- collapses all rows with the same order id into one row
+    GROUP BY o.id -- collapses all rows with the same order id into one row to count items of each order
     ORDER BY o.created_at DESC`;
 
     db.all(query, [userId], (err,orders) => {
