@@ -6,7 +6,4 @@ const { createReview, getReviewsByRestaurant } = require('../controllers/reviewC
 // POST /reviews
 router.post('/', createReview);
 
-// GET /restaurants/:id/reviews
-router.get('/:id/reviews', getReviewsByRestaurant);
-
 module.exports = router;

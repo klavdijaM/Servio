@@ -24,6 +24,8 @@ app.use('/restaurants', reviewRoutes);
 // orders
 app.use('/orders', orderRoutes);
 
+// reviews
+app.use('/reviews', reviewRoutes);
 
 module.exports = app; // allows other files to use this backend definition
 
