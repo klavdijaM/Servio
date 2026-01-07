@@ -7,6 +7,7 @@ const restaurantRoutes = require('./routes/restaurantRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');
 const dishRoutes = require('./routes/dishRoutes');
 const orderRoutes = require('./routes/orderRoutes');
+const reviewRoutes = require('./routes/reviewRoutes');
 
 app.use(express.json());
 
@@ -18,9 +19,11 @@ app.get('/health', (req, res) => {
 app.use('/restaurants', restaurantRoutes); // send any request starting with /restaurants (prefix) to restaurantRoutes
 app.use('/restaurants', categoryRoutes);
 app.use('/restaurants', dishRoutes);
+app.use('/restaurants', reviewRoutes);
 
 // orders
 app.use('/orders', orderRoutes);
+
 
 module.exports = app; // allows other files to use this backend definition
 
