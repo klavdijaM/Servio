@@ -75,7 +75,6 @@ CREATE TABLE IF NOT EXISTS reviews (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     restaurant_id INTEGER NOT NULL,
-    dish_id INTEGER,
     rating INTEGER NOT NULL,
     comment TEXT,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
