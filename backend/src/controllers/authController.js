@@ -30,3 +30,47 @@ function register(req, res) {
         });
     });
 }
+
+// POST /auth/login
+function login(req, res) {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ error: 'Email and password are required' });
+    }
+
+    const query = `
+        SELECT id, email, password
+        FROM users
+        WHERE email = ?
+    `;
+
+    db.get(query, [email], (err, user) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid login credentials' });
+        }
+
+        const passwordMatches = bcrypt.compareSync(password, user.password);
+
+        if (!passwordMatches) {
+            return res.status(401).json({ error: 'Invalid login credentials' });
+        }
+
+        res.json({
+            message: 'Login successful',
+            user: {
+                id: user.id,
+                email: user.email
+            }
+        });
+    });
+}
+
+module.exports = {
+    register,
+    login
+};
