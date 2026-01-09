@@ -1,3 +1,5 @@
+// router => URL-to-function mapper
+
 const express = require('express');
 const router = express.Router();
 
