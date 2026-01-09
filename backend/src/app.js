@@ -10,6 +10,7 @@ const orderRoutes = require('./routes/orderRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const voucherRoutes = require('./routes/voucherRoutes');
 const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 app.use(express.json());
 
@@ -34,6 +35,9 @@ app.use('/vouchers', voucherRoutes);
 
 // authentication
 app.use('/auth', authRoutes);
+
+// user
+app.use('/user', userRoutes);
 
 module.exports = app; // allows other files to use this backend definition
 
