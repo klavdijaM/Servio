@@ -37,7 +37,8 @@ app.use('/vouchers', voucherRoutes);
 app.use('/auth', authRoutes);
 
 // user
-app.use('/user', userRoutes);
+app.use('/users', userRoutes);
+
 
 module.exports = app; // allows other files to use this backend definition
 

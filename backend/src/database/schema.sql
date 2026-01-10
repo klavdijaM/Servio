@@ -79,6 +79,5 @@ CREATE TABLE IF NOT EXISTS reviews (
     comment TEXT,
     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id),
-    FOREIGN KEY (dish_id) REFERENCES dishes(id)
+    FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
 );

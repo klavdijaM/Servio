@@ -21,9 +21,22 @@ const db = new sqlite3.Database(dbPath, (err) => {
             console.error('Failed to execute schema', err);
             return;
         }
-        console.log('Database schema executed successfully');
-        require('./seed');
+
+        db.get('SELECT COUNT(*) as count FROM restaurants', (err, row) => {
+            if (err) {
+                console.error('Failed to check seed status', err);
+                return;
+            }
+
+            if (row.count === 0) {
+                console.log('Seeding database...');
+                require('./seed');
+            } else {
+                console.log('Database already seeded');
+            }
+        });
     });
+
 });
 
 module.exports = db;

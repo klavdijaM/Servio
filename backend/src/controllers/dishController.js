@@ -7,7 +7,7 @@ function getDishesByCategory(req, res) {
     const query = `
     SELECT id, name, description, price
     FROM dishes
-    WHERE categoryId = ?
+    WHERE category_id = ?
     ORDER BY id`;
 
     db.all(query, [categoryId], (err, rows) => {
