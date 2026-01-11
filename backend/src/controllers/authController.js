@@ -1,12 +1,15 @@
 const db = require('../database/db');
 const bcrypt = require('bcrypt'); // used for hashing passwords
+const jwt = require('jsonwebtoken');
+
+const JWT_SECRET = 'servio_jwt_secret';
 
 // POST /auth/register
 function register(req, res) {
-    const { email, password } = req.body;
+    const {email, password} = req.body;
 
     if (!email || !password) {
-        return res.status(400).json({ error: 'Email and password are required' });
+        return res.status(400).json({error: 'Email and password are required'});
     }
 
     const hashedPassword = bcrypt.hashSync(password, 10);
@@ -19,9 +22,9 @@ function register(req, res) {
     db.run(query, [email, hashedPassword], function (err) {
         if (err) {
             if (err.message.includes('UNIQUE')) {
-                return res.status(409).json({ error: 'Email already exists' });
+                return res.status(409).json({error: 'Email already exists'});
             }
-            return res.status(500).json({ error: 'Failed to register user' });
+            return res.status(500).json({error: 'Failed to register user'});
         }
 
         res.status(201).json({
@@ -33,10 +36,10 @@ function register(req, res) {
 
 // POST /auth/login
 function login(req, res) {
-    const { email, password } = req.body;
+    const {email, password} = req.body;
 
     if (!email || !password) {
-        return res.status(400).json({ error: 'Email and password are required' });
+        return res.status(400).json({error: 'Email and password are required'});
     }
 
     const query = `
@@ -47,25 +50,31 @@ function login(req, res) {
 
     db.get(query, [email], (err, user) => {
         if (err) {
-            return res.status(500).json({ error: 'Database error' });
+            return res.status(500).json({error: 'Database error'});
         }
 
         if (!user) {
-            return res.status(401).json({ error: 'Invalid login credentials' });
+            return res.status(401).json({error: 'Invalid login credentials'});
         }
 
         const passwordMatches = bcrypt.compareSync(password, user.password);
 
         if (!passwordMatches) {
-            return res.status(401).json({ error: 'Invalid login credentials' });
+            return res.status(401).json({error: 'Invalid login credentials'});
         }
+
+        const token = jwt.sign(
+            {
+                id: user.id,
+                email: user.email,
+            },
+            JWT_SECRET,
+            {expiresIn: '2h'}
+        );
 
         res.json({
             message: 'Login successful',
-            user: {
-                id: user.id,
-                email: user.email
-            }
+            token
         });
     });
 }
