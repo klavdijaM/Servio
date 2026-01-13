@@ -2,9 +2,10 @@ const db = require('../database/db');
 
 // POST /reviews => create a new review
 function createReview(req, res) {
-    const { userId, restaurantId, rating, comment } = req.body;
+    const userId = req.user.id;
+    const { restaurantId, rating, comment } = req.body;
 
-    if(!userId || !restaurantId || !rating){
+    if(!restaurantId || !rating){
         return res.status(400).json({error: 'Missing required review data'});
     }
     if(rating < 1 || rating > 5) {
