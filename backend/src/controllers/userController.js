@@ -3,11 +3,7 @@ const bcrypt = require('bcrypt');
 
 // GET /users/me
 function getCurrentUser(req, res) {
-    const userId = req.query.userId; //GET /users/me?userId=5
-
-    if (!userId) {
-        return res.status(400).json({ error: 'User ID is required' });
-    }
+    const userId = req.user.id;
 
     const query = `
         SELECT id, email, delivery_zone_id
@@ -30,9 +26,10 @@ function getCurrentUser(req, res) {
 
 // PUT /users/password
 function updatePassword(req, res) {
-    const { userId, currentPassword, newPassword } = req.body;
+    const userId = req.user.id;
+    const { currentPassword, newPassword } = req.body;
 
-    if (!userId || !currentPassword || !newPassword) {
+    if (!currentPassword || !newPassword) {
         return res.status(400).json({ error: 'Missing required data' });
     }
 
