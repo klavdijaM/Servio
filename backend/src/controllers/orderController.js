@@ -2,9 +2,10 @@ const db = require('../database/db');
 
 // POST /orders => inserting orders into the database
 function createOrder(req, res) {
-    const {userId, restaurantId, items, voucherId} = req.body;
+    const userId = req.user.id; // userId comes from the decoded JWT, not from client
+    const { restaurantId, items, voucherId } = req.body;
 
-    if (!userId || !restaurantId || !Array.isArray(items) || items.length === 0) {
+    if ( !restaurantId || !Array.isArray(items) || items.length === 0) {
         return res.status(400).json({error: 'Invalid order data'});
     }
 
@@ -66,18 +67,19 @@ function createOrder(req, res) {
 // GET /orders/:id => returns an order with its items
 function getOrderById(req, res) {
     const orderId = req.params.id;
+    const userId = req.user.id;
 
     const orderQuery = `
         SELECT *
         FROM orders
-        WHERE id = ?`;
+        WHERE id = ? AND user_id = ?`;
 
     const itemsQuery = `
         SELECT dish_id, quantity, price
         FROM order_items
         WHERE order_id = ?`;
 
-    db.get(orderQuery, [orderId], (err, order) => {
+    db.get(orderQuery, [orderId, userId], (err, order) => {
             if (err) {
                 return res.status(500).json({error: 'Database error'});
             }
@@ -98,11 +100,7 @@ function getOrderById(req, res) {
 
 // GET /orders => returns all orders for a user
 function getOrdersByUser(req, res) {
-    const userId = req.query.userId; //GET /orders?userId=5
-
-    if(!userId) {
-        return res.status(400).json({error: 'User ID is required'});
-    }
+    const userId = req.user.id;
 
     const query = `
     SELECT o.id, o.restaurant_id, o.status, o.created_at, COUNT(oi.id) AS total_items
