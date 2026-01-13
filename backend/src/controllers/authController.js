@@ -63,6 +63,7 @@ function login(req, res) {
             return res.status(401).json({error: 'Invalid login credentials'});
         }
 
+        // token creation
         const token = jwt.sign(
             {
                 id: user.id,
