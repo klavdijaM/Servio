@@ -1,6 +1,9 @@
 # Node
 node_modules/
 
+# Angular
+.angular/
+
 # Environment files
 .env
 
@@ -11,3 +14,4 @@ yarn-debug.log*
 # OS / IDE
 .DS_Store
 .idea/
+.vscode/
