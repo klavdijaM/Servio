@@ -2,6 +2,6 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
 import { App } from './app/app';
 
-// tells Angular it should treat App as the root component
+// starts Angular and treats App as the root component
 bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));

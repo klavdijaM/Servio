@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; // angular HTTP API - allows GET, POST..
 
+// service handles logic which is not UI related (data, backend communication)
+// sends login and register data to the backend
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // singleton - one instance of the service for entire app
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000/auth';
+  private apiUrl = 'http://localhost:3000/auth'; // defines a base path
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {} // HttpClient builds http requests
 
   register(email: string, password: string) {
-    return this.http.post(`${this.apiUrl}/register`, {
+    // returns an Observable
+    return this.http.post(`${this.apiUrl}/register`, { // req body
       email,
       password
     });

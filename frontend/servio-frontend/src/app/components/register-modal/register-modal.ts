@@ -1,0 +1,36 @@
+import { Component } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+
+@Component({
+  selector: 'app-register-modal',
+  imports: [],
+  templateUrl: './register-modal.html',
+  styleUrl: './register-modal.css',
+})
+
+export class RegisterModal {
+  email: string = '';
+  password: string = '';
+
+  @Output() closed = new EventEmitter<void>();
+
+
+  register() {
+    this.authService.register(this.email, this.password)
+      .subscribe({ // sends the HTTP request
+        next: () => { // (callback) runs if backend responds with success
+          alert('Registration successful');
+          this.close();
+        },
+        error: (err) => {
+          alert('Registration failed');
+          console.error(err);
+        }
+      });
+  }
+
+
+
+
+
+}
