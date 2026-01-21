@@ -1,9 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register-modal',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './register-modal.html',
   styleUrl: './register-modal.css',
 })
