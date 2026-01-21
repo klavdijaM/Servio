@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -12,8 +12,9 @@ export class RegisterModal {
   email: string = '';
   password: string = '';
 
-  @Output() closed = new EventEmitter<void>();
+  @Output() closed = new EventEmitter<void>(); // this component emits an event "closed"
 
+  constructor(private authService: AuthService) {}
 
   register() {
     this.authService.register(this.email, this.password)
@@ -29,8 +30,8 @@ export class RegisterModal {
       });
   }
 
-
-
-
+  close() {
+    this.closed.emit();
+  }
 
 }
