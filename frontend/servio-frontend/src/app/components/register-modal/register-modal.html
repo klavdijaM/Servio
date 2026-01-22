@@ -1,13 +1,18 @@
 <div class="modal-backdrop">
   <div class="modal">
-    <h2>Register</h2>
 
-    <button class="close-btn" (click)="close()">×</button>
+    <div class="modal-banner"></div>
 
-    <input type="email" placeholder="Email" [(ngModel)]="email" /> <!-- Keeps the input field and the email variable in sync -->
-    <input type="password" placeholder="Password" [(ngModel)]="password" />
+    <div class="modal-content">
+      <h2>REGISTER</h2>
 
-    <button class="register-btn" (click)="register()">Register</button>
+      <button class="close-btn" (click)="close()">×</button>
+
+      <input type="email" placeholder="Email" [(ngModel)]="email" />
+      <input type="password" placeholder="Password" [(ngModel)]="password" />
+
+      <button class="register-btn" (click)="register()">REGISTER</button>
+    </div>
 
   </div>
 </div>

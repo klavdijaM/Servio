@@ -9,51 +9,64 @@
 }
 
 .modal {
-  position: relative;
-  width: 400px;
+  display: flex;
+  width: 760px;
   background: #fff;
-  padding: 32px;
   border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  position: relative;
 }
 
-.modal h2 {
+.modal-banner {
+  width: 45%;
+  background-image: url('/assets/register-banner.webp'); /* adjust path if needed */
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-content {
+  width: 55%;
+  padding: 48px 40px;
+  position: relative;
+}
+
+.modal-content h2 {
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
   font-weight: 500;
 }
 
 .close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  background: transparent;
+  top: 20px;
+  right: 20px;
+  background: none;
   border: none;
-  padding: 0;
   font-size: 22px;
   font-weight: bold;
-  color: #000;
   cursor: pointer;
+  color: #000;
 }
 
-.modal input {
+.modal-content input {
   width: 100%;
   padding: 12px 0;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   border: none;
   border-bottom: 1px solid #ddd;
   font-size: 14px;
   outline: none;
 }
 
-.modal input:focus {
+.modal-content input:focus {
   border-bottom-color: #f5c400;
 }
 
 .register-btn {
   width: 100%;
   padding: 14px;
-  margin-top: 10px;
+  margin-top: 12px;
   border-radius: 999px;
   border: none;
   background: #f5c400;
@@ -64,4 +77,20 @@
 
 .register-btn:hover {
   background: #e0b300;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .modal-banner {
+    width: 100%;
+    height: 180px;
+  }
+
+  .modal-content {
+    width: 100%;
+  }
 }
