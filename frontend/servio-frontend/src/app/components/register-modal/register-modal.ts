@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class RegisterModal {
+  username: string = '';
   email: string = '';
   password: string = '';
 
@@ -18,16 +19,20 @@ export class RegisterModal {
   constructor(private authService: AuthService) {}
 
   register() {
-    this.authService.register(this.email, this.password)
+    this.authService.register(this.username, this.email, this.password)
       .subscribe({ // sends the HTTP request
         next: () => { // (callback) runs if backend responds with success
           alert('Registration successful');
           this.close();
         },
         error: (err) => {
-          alert('Registration failed');
-          console.error(err);
+          console.log('HTTP ERROR OBJECT:', err);
+          console.log('STATUS:', err.status);
+          console.log('BACKEND MESSAGE:', err.error);
+
+          alert(err.error?.error || 'Registration failed');
         }
+
       });
   }
 

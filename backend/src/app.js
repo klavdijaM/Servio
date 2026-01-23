@@ -1,7 +1,13 @@
 // defines what the backend can do - describes its behavior
 require('./database/db');
+
+const cors = require('cors');
 const express = require('express');
 const app = express(); // creates the backend application object
+
+app.use(cors({
+    origin: 'http://localhost:4200'
+}));
 
 const restaurantRoutes = require('./routes/restaurantRoutes');
 const categoryRoutes = require('./routes/categoryRoutes');

@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS delivery_zones (
 
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     delivery_zone_id INTEGER,
