@@ -12,6 +12,22 @@ function register(req, res) {
         return res.status(400).json({error: 'Email and password are required'});
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // regular expression object
+
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({
+            error: 'Invalid email format'
+        });
+    }
+
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d).{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+        return res.status(400).json({
+            error: 'Password must be at least 6 characters and contain letters and numbers'
+        });
+    }
+
     const hashedPassword = bcrypt.hashSync(password, 10);
 
     const query = `

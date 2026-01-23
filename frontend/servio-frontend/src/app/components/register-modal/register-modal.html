@@ -8,11 +8,31 @@
 
       <button class="close-btn" (click)="close()">×</button>
 
-      <input type="text" placeholder="Username" [(ngModel)]="username" />
-      <input type="email" placeholder="Email" [(ngModel)]="email" />
-      <input type="password" placeholder="Password" [(ngModel)]="password" />
+      <form (ngSubmit)="register()" #registerForm="ngForm">
 
-      <button class="register-btn" (click)="register()">REGISTER</button>
+        <input type="text" name="username" placeholder="Username" [(ngModel)]="username" required minlength="4" #usernameModel="ngModel"/>
+        @if (usernameModel.invalid && usernameModel.touched) {
+          <p class="error">
+            * Username must be at least 4 characters
+          </p>
+        }
+        <input type="email" name="email" placeholder="Email" [(ngModel)]="email" required #emailModel="ngModel" />
+        @if (emailModel.invalid && emailModel.touched) {
+          <p class="error">
+            * Please enter a valid email address
+          </p>
+        }
+        <input type="password" name="password" placeholder="Password" [(ngModel)]="password" required minlength="6" pattern="^(?=.*[A-Za-z])(?=.*\d)$" #passwordModel="ngModel" />
+        @if (emailModel.invalid && emailModel.touched) {
+          <p class="error">
+            * Password has to be at least 6 characters long and must contain letters and numbers
+          </p>
+        }
+
+        <button class="register-btn" type="submit" [disabled]="registerForm.invalid">REGISTER</button>
+
+      </form>
+
     </div>
 
   </div>
