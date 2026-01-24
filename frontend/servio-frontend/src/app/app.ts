@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { AuthService } from './services/auth.service';
 import { RouterOutlet } from '@angular/router';
 import { RegisterModal } from './components/register-modal/register-modal';
 import {LoginModal} from './components/login-modal/login-modal';
@@ -17,6 +18,8 @@ export class App {
   showRegisterModal = false;
   showLoginModal = false;
 
+  constructor(public authService: AuthService) {}
+
   openRegister() {
     this.showRegisterModal = true;
   }
@@ -31,6 +34,10 @@ export class App {
 
   closeLogin() {
     this.showLoginModal = false;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

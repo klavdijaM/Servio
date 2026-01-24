@@ -6,8 +6,14 @@
     </h1>
 
     <div class="hero-buttons">
-      <button class="btn btn-login" (click)="openLogin()">LOGIN</button>
-      <button class="btn btn-register" (click)="openRegister()">REGISTER</button>
+      @if (!authService.isLoggedIn()) {
+        <button class="btn btn-login" (click)="openLogin()">LOGIN</button>
+        <button class="btn btn-register" (click)="openRegister()">REGISTER</button>
+      }
+
+      @if (authService.isLoggedIn()) {
+        <button class="btn btn-login" (click)="logout()">LOGOUT</button>
+      }
     </div>
   </div>
 </section>
