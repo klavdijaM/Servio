@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   storeToken(token: string) {
-    localStorage.setItem('TOKEN_KEY', token);
+    localStorage.setItem(this.TOKEN_KEY, token);
   }
 
   getToken(): string | null {

@@ -18,8 +18,8 @@ export class LoginModal {
 
   login() {
     this.authService.login(this.email, this.password).subscribe({
-      next: () => {
-        // add token authentication logic
+      next: (response) => {
+        this.authService.storeToken(response.token);
         this.close();
       },
       error: (err) => {
