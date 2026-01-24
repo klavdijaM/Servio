@@ -1,0 +1,152 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  width: 800px;
+  min-height: 460px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.modal {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-banner {
+  width: 50%;
+  background-image: url('/assets/login-banner.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.modal-content {
+  width: 50%;
+  padding: 48px 40px;
+  position: relative;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 32px;
+  font-weight: 500;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 12px 0;
+  margin-bottom: 22px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+}
+
+.modal-content input:focus {
+  border-bottom-color: #f8bebc;
+}
+
+.register-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border-radius: 999px;
+  border: none;
+  background: #f8bebc;
+  color: #000;
+  font-weight: 570;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.register-btn:hover {
+  background: #daa9a9;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
+
+.register-btn:disabled {
+  background: #e6c1c1;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.register-btn:disabled:hover {
+  background: #e6c1c1;
+}
+
+
+@media (max-width: 768px) {
+
+  .modal-backdrop {
+    padding: 24px 0;
+    overflow-y: auto;
+  }
+
+  .modal {
+    flex-direction: column;
+    width: 90%;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+  }
+
+  .modal-banner {
+    flex-shrink: 0;
+    width: 100%;
+    height: 370px;
+    background-image: url('/assets/login-banner-mobile.webp');
+    position: relative;
+  }
+
+  .modal-content {
+    width: 100%;
+    position: static;
+  }
+
+  .close-btn {
+    color: #000;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    font-size: 26px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
