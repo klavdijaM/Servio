@@ -1,0 +1,56 @@
+<div class="modal-backdrop">
+  <div class="modal">
+
+    <div class="modal-banner"></div>
+
+    <div class="modal-content">
+      <h2>LOGIN</h2>
+
+      <button class="close-btn" (click)="close()">×</button>
+
+      <form (ngSubmit)="login()" #loginForm="ngForm">
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          [(ngModel)]="email"
+          email
+          required
+          #emailModel="ngModel"
+        />
+        @if (emailModel.invalid && emailModel.touched) {
+          <p class="error">
+            * Please enter a valid email address
+          </p>
+        }
+
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          [(ngModel)]="password"
+          required
+          minlength="6"
+          #passwordModel="ngModel"
+        />
+        @if (passwordModel.invalid && passwordModel.touched) {
+          <p class="error">
+            * Password must be at least 6 characters
+          </p>
+        }
+
+        <button
+          class="register-btn"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          LOGIN
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>

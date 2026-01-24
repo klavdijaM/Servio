@@ -19,6 +19,16 @@
   position: relative;
 }
 
+.modal {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+
 .modal-banner {
   width: 50%;
   background-image: url('/assets/register-banner.webp');
