@@ -45,15 +45,15 @@ body {
 }
 
 .btn-login {
-  background-color: #fff;
+  background-color: #f8bebc;
   color: #000;
   border: none;
 }
 
 .btn-login:hover {
   background-color: transparent;
-  color: #fff;
-  border: 2px solid #fff;
+  color: #f8bebc;
+  border: 2px solid #f8bebc;
 }
 
 .btn-register {
@@ -65,5 +65,9 @@ body {
 .btn-register:hover {
   background-color: #fff;
   color: #000;
-  border: none;
+  border: 2px solid #fff;
+}
+
+@media (max-width: 768px) {
+
 }
