@@ -15,6 +15,7 @@ export class RegisterModal {
   password: string = '';
 
   @Output() closed = new EventEmitter<void>(); // this component emits an event "closed"
+  @Output() registered = new EventEmitter<void>();
 
   constructor(private authService: AuthService) {}
 
@@ -22,8 +23,7 @@ export class RegisterModal {
     this.authService.register(this.username, this.email, this.password)
       .subscribe({ // sends the HTTP request
         next: () => { // (callback) runs if backend responds with success
-          alert('Registration successful');
-          this.close();
+          this.registered.emit();
         },
         error: (err) => {
           console.log('HTTP ERROR OBJECT:', err);
