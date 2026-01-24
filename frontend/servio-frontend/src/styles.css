@@ -50,8 +50,20 @@ body {
   border: none;
 }
 
+.btn-login:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
 .btn-register {
   background-color: transparent;
   color: #fff;
   border: 2px solid #fff;
+}
+
+.btn-register:hover {
+  background-color: #fff;
+  color: #000;
+  border: none;
 }

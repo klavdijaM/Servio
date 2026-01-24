@@ -6,7 +6,7 @@
     </h1>
 
     <div class="hero-buttons">
-      <button class="btn btn-login">LOGIN</button>
+      <button class="btn btn-login" (click)="openLogin()">LOGIN</button>
       <button class="btn btn-register" (click)="openRegister()">REGISTER</button>
     </div>
   </div>
@@ -14,4 +14,8 @@
 
 @if (showRegisterModal) { <!-- create the modal if showRegisterModal == true -->
   <app-register-modal (closed)="closeRegister()" /> <!--when the child component emits the closed event, call the method in the parent-->
+}
+
+@if (showLoginModal) {
+  <app-login-modal (closed)="closeLogin()" />
 }
