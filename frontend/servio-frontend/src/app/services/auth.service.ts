@@ -42,5 +42,6 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem(this.TOKEN_KEY);
+    window.location.reload();
   }
 }
