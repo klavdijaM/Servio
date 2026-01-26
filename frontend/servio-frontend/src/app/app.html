@@ -19,9 +19,17 @@
 </section>
 
 @if (showRegisterModal) { <!-- create the modal if showRegisterModal == true -->
-  <app-register-modal (closed)="closeRegister()" /> <!--when the child component emits the closed event, call the method in the parent-->
+  <app-register-modal (closed)="closeRegister()" (registered)="handleRegistrationSuccess()"/> <!--when the child component emits the closed event, call the method in the parent-->
+
 }
 
 @if (showLoginModal) {
   <app-login-modal (closed)="closeLogin()" />
 }
+
+@if (showRegisterSuccess) {
+  <app-registration-success-modal
+    (loginRequested)="goToLoginFromSuccess()"
+  />
+}
+
