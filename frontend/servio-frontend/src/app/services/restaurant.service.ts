@@ -9,6 +9,7 @@ export interface Restaurant { // matches the structure of the restaurant obj fro
   minimum_order_value: number;
 }
 
+// fetches restaurants from backend
 @Injectable({
   providedIn: 'root' // one instance of the class
 })
