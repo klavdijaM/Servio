@@ -1,0 +1,16 @@
+<section class="categories-section">
+  <h2 class="categories-title">
+    CATEGORIES
+  </h2>
+
+  <div class="categories-scroll">
+    @for (cuisine of cuisines; track cuisine.key) {
+      <div
+        class="category-banner"
+        (click)="selectCuisine(cuisine.key)"
+        [style.backgroundImage]="'url(' + cuisine.image + ')'"
+      >
+      </div>
+    }
+  </div>
+</section>
