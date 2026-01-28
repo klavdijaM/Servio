@@ -18,6 +18,11 @@
   </div>
 </section>
 
+<!-- listens for and catches the cuisineSelected event -->
+<app-cuisine-categories
+  (cuisineSelected)="onCuisineSelected($event)"
+></app-cuisine-categories>
+
 @if (showRegisterModal) { <!-- create the modal if showRegisterModal == true -->
   <app-register-modal (closed)="closeRegister()" (registered)="handleRegistrationSuccess()"/> <!--when the child component emits the closed event, call the method in the parent-->
 

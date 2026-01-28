@@ -14,6 +14,6 @@ export class CuisineCategoriesComponent {
 
   // called when the cuisine banner is clicked
   selectCuisine(cuisineKey: string) {
-    this.cuisineSelected.emit(cuisineKey);
+    this.cuisineSelected.emit(cuisineKey); // sends the value out of the component ('japanese')
   }
 }
