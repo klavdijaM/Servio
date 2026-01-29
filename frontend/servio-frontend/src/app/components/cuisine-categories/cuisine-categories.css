@@ -1,6 +1,7 @@
 .categories-section {
   margin-top: 60px;
   padding: 0 80px;
+  position: relative;
 }
 
 .categories-title {
@@ -49,6 +50,38 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.scroll-arrow.left {
+  left: 20px;
+}
+
+.scroll-arrow.right {
+  right: 20px;
+}
+
+.scroll-arrow:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+
 @media (max-width: 768px) {
   .categories-section {
     padding: 0 24px;
@@ -62,5 +95,14 @@
   .categories-title {
     font-size: 24px;
   }
+
+  .scroll-arrow.left {
+    left: 12px;
+  }
+
+  .scroll-arrow.right {
+    right: 12px;
+  }
+
 }
 
