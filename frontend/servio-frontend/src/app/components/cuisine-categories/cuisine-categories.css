@@ -4,7 +4,7 @@
 }
 
 .categories-title {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 500;
   position: relative;
   display: inline-block;
@@ -16,7 +16,7 @@
   position: absolute;
   left: 0;
   bottom: -6px;
-  width: 60%;
+  width: 100%;
   height: 4px;
   background-color: #f8bebc;
   border-radius: 2px;
@@ -57,6 +57,10 @@
   .category-banner {
     flex: 0 0 180px;
     height: 120px;
+  }
+
+  .categories-title {
+    font-size: 24px;
   }
 }
 
