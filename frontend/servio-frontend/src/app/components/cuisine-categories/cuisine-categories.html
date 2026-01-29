@@ -3,14 +3,37 @@
     CATEGORIES
   </h2>
 
-  <div class="categories-scroll">
+  @if (canScrollLeft) {
+    <button
+      class="scroll-arrow left"
+      (click)="scrollLeft()"
+      aria-label="Scroll left"
+    >
+      ‹
+    </button>
+  }
+  
+  <div
+    class="categories-scroll"
+    #scrollContainer
+    (scroll)="onScroll()"
+  >
     @for (cuisine of cuisines; track cuisine.key) {
       <div
         class="category-banner"
         (click)="selectCuisine(cuisine.key)"
         [style.backgroundImage]="'url(' + cuisine.image + ')'"
-      >
-      </div>
+      ></div>
     }
   </div>
+
+  @if (canScrollRight) {
+    <button
+      class="scroll-arrow right"
+      (click)="scrollRight()"
+      aria-label="Scroll right"
+    >
+      ›
+    </button>
+  }
 </section>
