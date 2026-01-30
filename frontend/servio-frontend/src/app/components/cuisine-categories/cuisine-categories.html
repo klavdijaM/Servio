@@ -3,37 +3,41 @@
     CATEGORIES
   </h2>
 
-  @if (canScrollLeft) {
-    <button
-      class="scroll-arrow left"
-      (click)="scrollLeft()"
-      aria-label="Scroll left"
-    >
-      ‹
-    </button>
-  }
+  <div class="categories-scroll-wrapper">
 
-  <div
-    class="categories-scroll"
-    #scrollContainer
-    (scroll)="onScroll()"
-  >
-    @for (cuisine of cuisines; track cuisine.key) {
-      <div
-        class="category-banner"
-        (click)="selectCuisine(cuisine.key)"
-        [style.backgroundImage]="'url(' + cuisine.image + ')'"
-      ></div>
+    @if (canScrollLeft) {
+      <button
+        class="scroll-arrow left"
+        (click)="scrollLeft()"
+        aria-label="Scroll left"
+      >
+        ‹
+      </button>
     }
-  </div>
 
-  @if (canScrollRight) {
-    <button
-      class="scroll-arrow right"
-      (click)="scrollRight()"
-      aria-label="Scroll right"
+    <div
+      class="categories-scroll"
+      #scrollContainer
+      (scroll)="onScroll()"
     >
-      ›
-    </button>
-  }
+      @for (cuisine of cuisines; track cuisine.key) {
+        <div
+          class="category-banner"
+          (click)="selectCuisine(cuisine.key)"
+          [style.backgroundImage]="'url(' + cuisine.image + ')'"
+        ></div>
+      }
+    </div>
+
+    @if (canScrollRight) {
+      <button
+        class="scroll-arrow right"
+        (click)="scrollRight()"
+        aria-label="Scroll right"
+      >
+        ›
+      </button>
+    }
+
+  </div>
 </section>

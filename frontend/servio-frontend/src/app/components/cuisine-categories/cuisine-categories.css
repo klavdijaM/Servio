@@ -1,8 +1,7 @@
 .categories-section {
   margin-top: 60px;
   padding: 0 80px;
-  position: relative;
-}
+  }
 
 .categories-title {
   font-size: 30px;
@@ -27,7 +26,7 @@
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding-bottom: 10px;
+  padding: 10px 0 14px;
   scrollbar-width: none;
 }
 
@@ -50,16 +49,19 @@
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
+.categories-scroll-wrapper {
+  position: relative;
+}
 
 .scroll-arrow {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 50%; /* places top edge of the el at 50% of the parent's height */
+  transform: translateY(-50%); /* centers the element base don its own size */
   width: 42px;
   height: 42px;
   border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.27);
   color: #fff;
   font-size: 28px;
   cursor: pointer;
@@ -67,14 +69,16 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+  line-height: 1;
+  padding-bottom: 2px;
 }
 
 .scroll-arrow.left {
-  left: 20px;
+  left: -60px;
 }
 
 .scroll-arrow.right {
-  right: 20px;
+  right: -60px;
 }
 
 .scroll-arrow:hover {
@@ -84,7 +88,7 @@
 
 @media (max-width: 768px) {
   .categories-section {
-    padding: 0 24px;
+    padding: 0 30px;
   }
 
   .category-banner {
@@ -97,11 +101,16 @@
   }
 
   .scroll-arrow.left {
-    left: 12px;
+    left: -40px;
   }
 
   .scroll-arrow.right {
-    right: 12px;
+    right: -40px;
+  }
+
+  .scroll-arrow {
+     width: 30px;
+     height: 30px;
   }
 
 }
