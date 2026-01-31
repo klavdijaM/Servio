@@ -10,6 +10,7 @@ import { CUISINES, Cuisine } from '../../data/cuisines';
 export class CuisineCategoriesComponent implements AfterViewInit {
   cuisines: Cuisine[] = CUISINES;
 
+  // output -> sends message from child to parent
   @Output() cuisineSelected = new EventEmitter<string>();
   @ViewChild('scrollContainer') scrollContainer!: ElementRef<HTMLDivElement>;
 

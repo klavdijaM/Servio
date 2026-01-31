@@ -18,6 +18,7 @@ export class RestaurantService {
 
   constructor(private http: HttpClient) {}
 
+  // creates the http GET request (observable) => doesn't send it yet
   getRestaurants() {
     return this.http.get<Restaurant[]>(this.apiUrl); // returns array of restaurant objects
   }
