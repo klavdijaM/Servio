@@ -1,10 +1,10 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { RouterOutlet } from '@angular/router';
 import { RegisterModal } from './components/register-modal/register-modal';
 import { RegistrationSuccessModal } from './components/registration-success-modal/registration-success-modal';
 import {LoginModal} from './components/login-modal/login-modal';
 import {CuisineCategoriesComponent} from './components/cuisine-categories/cuisine-categories';
+import { RestaurantService, Restaurant } from './services/restaurant.service';
 
 // root UI component definition
 @Component({
@@ -15,13 +15,28 @@ import {CuisineCategoriesComponent} from './components/cuisine-categories/cuisin
 })
 
 // logic container
-export class App {
+export class App implements OnInit {
 
   showRegisterModal = false;
   showLoginModal = false;
   showRegisterSuccess = false;
+  restaurants: Restaurant[] = [];
 
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    private restaurantService: RestaurantService
+  ) {}
+
+  ngOnInit() { // runs once when app loads
+    this.restaurantService.getRestaurants().subscribe({ // sends the http request
+      next: (data) => {
+        this.restaurants = data;
+      },
+      error: (err) => {
+        console.error('Failed to load restaurants', err);
+      }
+    });
+  }
 
   openRegister() {
     this.showRegisterModal = true;
