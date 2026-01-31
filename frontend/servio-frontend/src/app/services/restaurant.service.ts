@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface Restaurant { // matches the structure of the restaurant obj from backend
+export interface Restaurant {
   id: number;
   name: string;
   cuisine: string;
   delivery_fee: number;
   minimum_order_value: number;
+  delivery_time: number;
+  rating: number | null;
+  rating_count: number;
 }
 
 // fetches restaurants from backend
