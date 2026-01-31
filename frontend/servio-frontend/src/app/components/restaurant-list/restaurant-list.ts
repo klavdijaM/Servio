@@ -8,6 +8,6 @@ import { Restaurant } from '../../services/restaurant.service';
   styleUrl: './restaurants-list.css'
 })
 export class RestaurantsListComponent {
-  // allows the variable to be set from outside
+  // allows the variable to be set from outside - the component does not own restaurant data, it has to receive it
   @Input() restaurants: Restaurant[] = [];
 }
