@@ -1,7 +1,7 @@
 .categories-section {
   margin-top: 60px;
   padding: 0 80px;
-  }
+}
 
 .categories-title {
   font-size: 30px;
@@ -26,7 +26,7 @@
   display: flex;
   gap: 20px;
   overflow-x: auto;
-  padding: 10px 0 14px;
+  padding: 20px 0 30px;
   scrollbar-width: none;
 }
 
@@ -85,7 +85,6 @@
   background: rgba(0, 0, 0, 0.65);
 }
 
-
 @media (max-width: 768px) {
   .categories-section {
     padding: 0 30px;
@@ -109,9 +108,7 @@
   }
 
   .scroll-arrow {
-     width: 30px;
-     height: 30px;
+    width: 30px;
+    height: 30px;
   }
-
 }
-

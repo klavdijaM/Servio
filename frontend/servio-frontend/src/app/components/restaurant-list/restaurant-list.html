@@ -1,5 +1,7 @@
 <section class="restaurants-section">
 
+  <h1 class="section-title"> RESTAURANTS </h1>
+
   <div class="restaurants-grid">
 
     @for (restaurant of restaurants; track restaurant.id) {
@@ -41,15 +43,18 @@
               @if (restaurant.delivery_fee === 0) {
                 Free delivery
               } @else {
-                €{{ restaurant.delivery_fee.toFixed(2) }}
+                Delivery €{{ restaurant.delivery_fee.toFixed(2) }}
               }
             </span>
 
-            @if (restaurant.minimum_order_value > 0) {
-              <span class="min-order">
-                Min €{{ restaurant.minimum_order_value.toFixed(2) }}
-              </span>
-            }
+            <span class="min-order">
+              @if (restaurant.minimum_order_value > 0) {
+                Min €{{restaurant.minimum_order_value.toFixed(2)}}
+              } @else {
+                No min
+              }
+            </span>
+
           </div>
 
         </div>
