@@ -1,19 +1,11 @@
 .restaurants-section {
-  padding: 60px 80px;
-  margin-top: 40px;
-  background: #fff0f0;
-}
+  padding: 40px 0;
 
-.section-title {
-  font-size: 40px;
-  font-weight: 510;
-  margin-bottom: 30px;
-  margin-top: -30px;
 }
 
 .restaurants-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
   gap: 32px;
 }
 
@@ -97,13 +89,6 @@
 @media (max-width: 768px) {
   .restaurants-section {
     padding: 40px 24px;
-  }
-
-  .section-title {
-    font-size: 30px;
-    font-weight: 510;
-    margin-bottom: 30px;
-    margin-top: -10px;
   }
 
   .restaurants-grid {

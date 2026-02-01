@@ -19,7 +19,7 @@ import {RestaurantFilters, RestaurantFiltersComponent} from './components/restau
   styleUrl: './app.css' // defines the location of css
 })
 
-// logic container
+// business logic container
 export class App implements OnInit {
 
   showRegisterModal = false;
@@ -27,6 +27,7 @@ export class App implements OnInit {
   showRegisterSuccess = false;
   restaurants: Restaurant[] = [];
   allRestaurants: Restaurant[] = []; // full, unfiltered list
+  showFiltersModal = false;
 
 
   constructor(
@@ -118,6 +119,15 @@ export class App implements OnInit {
       return true;
     });
   }
+
+  openFilters() {
+    this.showFiltersModal = true;
+  }
+
+  toggleFilters() {
+    this.showFiltersModal = !this.showFiltersModal;
+  }
+
 
 
 }

@@ -30,11 +30,38 @@
   <div class="restaurants-header">
     <h1 class="section-title">RESTAURANTS</h1>
 
-    <!-- event is the new filters object -->
-    <app-restaurant-filters
-      (filtersChanged)="onFiltersChanged($event)">
-    </app-restaurant-filters>
+    <!-- DESKTOP FILTERS -->
+    <div class="filters-desktop">
+      <!-- event is the new filters object -->
+      <app-restaurant-filters
+        (filtersChanged)="onFiltersChanged($event)">
+      </app-restaurant-filters>
+    </div>
+
+    <!-- MOBILE FILTER BUTTON -->
+    <button
+      class="filters-button-mobile"
+      (click)="toggleFilters()">
+      ☰
+    </button>
+
+    <!-- MOBILE POPUP -->
+    @if (showFiltersModal) {
+      <div class="filters-popup">
+        <app-restaurant-filters
+          (filtersChanged)="onFiltersChanged($event)">
+        </app-restaurant-filters>
+
+        <button
+          class="apply-filters-btn"
+          (click)="toggleFilters()">
+          Apply filters
+        </button>
+      </div>
+    }
   </div>
+
+
 
   <!-- sets the child's restaurant input to restaurant variable from App -->
   <app-restaurants-list
@@ -59,4 +86,7 @@
     (loginRequested)="goToLoginFromSuccess()"
   />
 }
+
+
+
 
