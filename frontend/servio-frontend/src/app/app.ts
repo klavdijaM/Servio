@@ -24,6 +24,8 @@ export class App implements OnInit {
   showLoginModal = false;
   showRegisterSuccess = false;
   restaurants: Restaurant[] = [];
+  allRestaurants: Restaurant[] = []; // full, unfiltered list
+
 
   constructor(
     public authService: AuthService,
@@ -37,7 +39,8 @@ export class App implements OnInit {
     this.restaurantService.getRestaurants().subscribe({
       next: (data) => {
         console.log('Restaurants from backend:', data);
-        this.restaurants = data;
+        this.allRestaurants = data; // store original list from backend
+        this.restaurants = data; // show all restaurants initially
         this.cdr.detectChanges(); // refreshes the ui when data changes (when we get restaurants from backend)
       },
       error: (err) => {
@@ -77,8 +80,9 @@ export class App implements OnInit {
   }
 
   onCuisineSelected(cuisine: string) {
-    console.log('Selected cuisine:', cuisine);
+    this.restaurants = this.allRestaurants.filter(
+      restaurant => restaurant.cuisine === cuisine
+    );
   }
-
-
+  
 }
