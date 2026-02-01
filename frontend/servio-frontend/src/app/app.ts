@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { RegisterModal } from './components/register-modal/register-modal';
 import { RegistrationSuccessModal } from './components/registration-success-modal/registration-success-modal';
@@ -6,12 +6,13 @@ import {LoginModal} from './components/login-modal/login-modal';
 import {CuisineCategoriesComponent} from './components/cuisine-categories/cuisine-categories';
 import { RestaurantService, Restaurant } from './services/restaurant.service';
 import { RestaurantsListComponent } from './components/restaurant-list/restaurant-list';
-
+import { CommonModule } from '@angular/common';
 
 // root UI component definition
 @Component({
   selector: 'app-root', // this component will be rendered when app-root appears in html
-  imports: [RegisterModal, LoginModal, RegistrationSuccessModal, CuisineCategoriesComponent, RestaurantsListComponent ], // what the component is allowed to use
+  standalone: true,
+  imports: [CommonModule, RegisterModal, LoginModal, RegistrationSuccessModal, CuisineCategoriesComponent, RestaurantsListComponent ], // what the component is allowed to use
   templateUrl: './app.html', // defines the location of the html for this component
   styleUrl: './app.css' // defines the location of css
 })
@@ -26,13 +27,18 @@ export class App implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private restaurantService: RestaurantService
+    private restaurantService: RestaurantService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() { // runs once when app loads
-    this.restaurantService.getRestaurants().subscribe({ // sends the http request
+    console.log('App initialized');
+
+    this.restaurantService.getRestaurants().subscribe({
       next: (data) => {
+        console.log('Restaurants from backend:', data);
         this.restaurants = data;
+        this.cdr.detectChanges(); // refreshes the ui when data changes (when we get restaurants from backend)
       },
       error: (err) => {
         console.error('Failed to load restaurants', err);

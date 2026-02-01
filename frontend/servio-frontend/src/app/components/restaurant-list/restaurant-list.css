@@ -1,0 +1,126 @@
+.restaurants-section {
+  padding: 60px 80px;
+  background: #ffefef;
+}
+
+.restaurants-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+/* Card */
+.restaurant-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.restaurant-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.16);
+}
+
+/* Image */
+.restaurant-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Content */
+.restaurant-content {
+  padding: 16px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Header */
+.restaurant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.restaurant-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #111;
+}
+
+.restaurant-cuisine {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Meta row */
+.restaurant-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.rating {
+  color: #111;
+  font-weight: 500;
+}
+
+.delivery-time {
+  color: #555;
+}
+
+/* Footer */
+.restaurant-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.delivery-fee {
+  font-weight: 500;
+  color: #111;
+}
+
+.min-order {
+  color: #777;
+}
+
+@media (max-width: 768px) {
+  .restaurants-section {
+    padding: 40px 24px;
+  }
+
+  .restaurants-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .restaurant-image {
+    height: 160px;
+  }
+
+  .restaurant-content {
+    padding: 14px;
+  }
+
+  .restaurant-name {
+    font-size: 16px;
+  }
+
+  .restaurant-cuisine {
+    font-size: 13px;
+  }
+
+  .restaurant-meta,
+  .restaurant-footer {
+    font-size: 13px;
+  }
+}
+
