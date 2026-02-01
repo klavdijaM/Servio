@@ -1,0 +1,60 @@
+<section class="restaurants-section">
+
+  <div class="restaurants-grid">
+
+    @for (restaurant of restaurants; track restaurant.id) {
+      <article
+        class="restaurant-card"
+        (click)="openRestaurant(restaurant.id)"
+      >
+
+        <div
+          class="restaurant-image"
+          [style.backgroundImage]="'url(' + getRestaurantImage(restaurant.name) + ')'"
+        ></div>
+
+        <div class="restaurant-content">
+
+          <div class="restaurant-header">
+            <h3 class="restaurant-name">
+              {{ restaurant.name }}
+            </h3>
+            <span class="restaurant-cuisine">
+              {{ restaurant.cuisine }}
+            </span>
+          </div>
+
+          <div class="restaurant-meta">
+            @if (restaurant.rating !== null) {
+              <span class="rating">
+                ⭐ {{ restaurant.rating }} ({{ restaurant.rating_count }})
+              </span>
+            }
+
+            <span class="delivery-time">
+              ⏱️ {{ restaurant.delivery_time }} min
+            </span>
+          </div>
+
+          <div class="restaurant-footer">
+            <span class="delivery-fee">
+              @if (restaurant.delivery_fee === 0) {
+                Free delivery
+              } @else {
+                €{{ restaurant.delivery_fee.toFixed(2) }}
+              }
+            </span>
+
+            @if (restaurant.minimum_order_value > 0) {
+              <span class="min-order">
+                Min €{{ restaurant.minimum_order_value.toFixed(2) }}
+              </span>
+            }
+          </div>
+
+        </div>
+      </article>
+    }
+
+  </div>
+</section>
