@@ -7,14 +7,14 @@ import {CuisineCategoriesComponent} from './components/cuisine-categories/cuisin
 import { RestaurantService, Restaurant } from './services/restaurant.service';
 import { RestaurantsListComponent } from './components/restaurant-list/restaurant-list';
 import { CommonModule } from '@angular/common';
-import { RestaurantFilters } from './components/restaurant-filters/restaurant-filters';
+import {RestaurantFilters, RestaurantFiltersComponent} from './components/restaurant-filters/restaurant-filters';
 
 
 // root UI component definition
 @Component({
   selector: 'app-root', // this component will be rendered when app-root appears in html
   standalone: true,
-  imports: [CommonModule, RegisterModal, LoginModal, RegistrationSuccessModal, CuisineCategoriesComponent, RestaurantsListComponent ], // what the component is allowed to use
+  imports: [CommonModule, RegisterModal, LoginModal, RegistrationSuccessModal, CuisineCategoriesComponent, RestaurantsListComponent, RestaurantFiltersComponent  ], // what the component is allowed to use
   templateUrl: './app.html', // defines the location of the html for this component
   styleUrl: './app.css' // defines the location of css
 })
@@ -87,7 +87,37 @@ export class App implements OnInit {
     );
   }
 
-  
+  onFiltersChanged(filters: RestaurantFilters) {
+    this.restaurants = this.allRestaurants.filter(restaurant => {
+
+      if (filters.freeDelivery && restaurant.delivery_fee !== 0) {
+        return false;
+      }
+
+      if (
+        filters.maxDeliveryTime !== null &&
+        restaurant.delivery_time > filters.maxDeliveryTime
+      ) {
+        return false;
+      }
+
+      if (
+        filters.minRating !== null &&
+        (restaurant.rating === null || restaurant.rating < filters.minRating)
+      ) {
+        return false;
+      }
+
+      if (
+        filters.maxMinOrder !== null &&
+        restaurant.minimum_order_value > filters.maxMinOrder
+      ) {
+        return false;
+      }
+
+      return true;
+    });
+  }
 
 
 }
