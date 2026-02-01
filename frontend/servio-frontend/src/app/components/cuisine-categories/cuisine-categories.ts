@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CUISINES, Cuisine } from '../../data/cuisines';
 
 @Component({
@@ -9,6 +9,8 @@ import { CUISINES, Cuisine } from '../../data/cuisines';
 })
 export class CuisineCategoriesComponent implements AfterViewInit {
   cuisines: Cuisine[] = CUISINES;
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   // output -> sends message from child to parent
   @Output() cuisineSelected = new EventEmitter<string>();
@@ -25,6 +27,7 @@ export class CuisineCategoriesComponent implements AfterViewInit {
   // gets activated on first page loading
   ngAfterViewInit() {
     this.updateScrollArrows();
+    this.cdr.detectChanges();
   }
 
   // gets activated when user scrolls
