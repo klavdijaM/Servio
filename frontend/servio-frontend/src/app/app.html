@@ -24,10 +24,25 @@
   (cuisineSelected)="onCuisineSelected($event)"
 ></app-cuisine-categories>
 
-<!-- sets the child's restaurant input to restaurant variable from App -->
-<app-restaurants-list
-  [restaurants]="restaurants">
-</app-restaurants-list>
+
+<section class="restaurants-wrapper">
+
+  <div class="restaurants-header">
+    <h1 class="section-title">RESTAURANTS</h1>
+
+    <!-- event is the new filters object -->
+    <app-restaurant-filters
+      (filtersChanged)="onFiltersChanged($event)">
+    </app-restaurant-filters>
+  </div>
+
+  <!-- sets the child's restaurant input to restaurant variable from App -->
+  <app-restaurants-list
+    [restaurants]="restaurants">
+  </app-restaurants-list>
+
+</section>
+
 
 
 @if (showRegisterModal) { <!-- create the modal if showRegisterModal == true -->

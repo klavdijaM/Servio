@@ -26,10 +26,11 @@ export class RestaurantFiltersComponent {
     maxMinOrder: null
   };
 
+  // without events, child can't talk to the parent component (app)
   @Output() filtersChanged = new EventEmitter<RestaurantFilters>();
 
   // will be called when a checkbox/input changes
   onFiltersChange() {
-    this.filtersChanged.emit({ ...this.filters }); // creates a new filters object
+    this.filtersChanged.emit({ ...this.filters }); // sends a copy of the new filters object to the parent
   }
 }

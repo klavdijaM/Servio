@@ -7,6 +7,8 @@ import {CuisineCategoriesComponent} from './components/cuisine-categories/cuisin
 import { RestaurantService, Restaurant } from './services/restaurant.service';
 import { RestaurantsListComponent } from './components/restaurant-list/restaurant-list';
 import { CommonModule } from '@angular/common';
+import { RestaurantFilters } from './components/restaurant-filters/restaurant-filters';
+
 
 // root UI component definition
 @Component({
@@ -84,5 +86,8 @@ export class App implements OnInit {
       restaurant => restaurant.cuisine === cuisine
     );
   }
+
   
+
+
 }
