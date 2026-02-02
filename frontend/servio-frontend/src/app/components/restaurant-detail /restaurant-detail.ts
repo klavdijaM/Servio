@@ -71,12 +71,16 @@ export class RestaurantDetailComponent implements OnInit {
   loadDishes(categoryId: number) {
     this.activeCategoryId = categoryId;
 
+    // clear old dishes from DOM
+    this.dishes = [];
+    this.cdr.detectChanges();
+
     this.restaurantService
       .getDishesByCategory(this.restaurantId, categoryId)
       .subscribe({
         next: (data) => {
           this.dishes = data;
-          this.cdr.detectChanges();
+          this.cdr.detectChanges(); // detect and render new dishes
         },
         error: (err) => {
           console.error('Failed to load dishes', err);

@@ -37,6 +37,11 @@
   border: 1px solid #ddd;
   background: #fff;
   cursor: pointer;
+  font-size: 17px;
+}
+
+.category-btn:hover {
+  background: rgba(231, 231, 231, 0.54);
 }
 
 .category-btn.active {
@@ -55,5 +60,27 @@
   justify-content: space-between;
   padding: 16px;
   border-radius: 12px;
-  background: #fafafa;
+  background: rgba(255, 234, 234, 0.33);
 }
+
+.dish-info h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.dish-info p {
+  font-size: 15px;
+  font-weight: 400;
+  color: #7a7a7a;
+}
+
+@media (max-width: 768px){
+  .category-btn {
+    font-size: 15px;
+  }
+
+  .dish-info h3 {
+    font-size: 17px;
+  }
+}
+
