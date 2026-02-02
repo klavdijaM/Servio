@@ -51,7 +51,6 @@
     @if (showFiltersModal) {
       <div class="filters-popup">
         <app-restaurant-filters
-          #mobileFilters
           [filters]="activeFilters"
           [autoApply]="false"
           (filtersChanged)="onFiltersChanged($event)">
@@ -66,15 +65,12 @@
     }
   </div>
 
-
-
   <!-- sets the child's restaurant input to restaurant variable from App -->
   <app-restaurants-list
     [restaurants]="restaurants">
   </app-restaurants-list>
 
 </section>
-
 
 
 @if (showRegisterModal) { <!-- create the modal if showRegisterModal == true -->
