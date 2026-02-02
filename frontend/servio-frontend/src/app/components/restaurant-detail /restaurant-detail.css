@@ -1,0 +1,59 @@
+.restaurant-hero {
+  height: 350px;
+  background-size: cover;
+  background-position: center;
+}
+
+.restaurant-detail {
+  padding: 40px 80px;
+  background: #fff;
+}
+
+.restaurant-header {
+  margin-bottom: 24px;
+}
+
+.restaurant-name {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.restaurant-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #555;
+}
+
+.categories {
+  display: flex;
+  gap: 12px;
+  margin: 32px 0;
+}
+
+.category-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+
+.category-btn.active {
+  background: #f8bebc;
+  border-color: #f8bebc;
+}
+
+.dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dish-card {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: 12px;
+  background: #fafafa;
+}
