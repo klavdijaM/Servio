@@ -2,10 +2,10 @@
 @if (restaurant) {
   <section
     class="restaurant-hero"
-    [style.backgroundImage]="'url(' + getRestaurantImage(restaurant.name) + ')'"
+    [style.backgroundImage]="restaurant ? 'url(' + getRestaurantImage(restaurant.name) + ')' : null"
   ></section>
 }
-
+<h1></h1>
 <section class="restaurant-detail">
 
   <!-- RESTAURANT HEADER -->

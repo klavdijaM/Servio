@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RestaurantService, Restaurant } from '../../services/restaurant.service';
@@ -15,7 +15,7 @@ import { RESTAURANTS } from '../../data/restaurants';
 export class RestaurantDetailComponent implements OnInit {
 
   restaurantId!: number;
-  restaurant!: Restaurant; // starts as undefined
+  restaurant: Restaurant | null = null;
   categories: { id: number; name: string }[] = [];
   dishes: { id: number; name: string; description: string; price: number }[] = [];
   activeCategoryId: number | null = null; // currently selected category
@@ -23,7 +23,8 @@ export class RestaurantDetailComponent implements OnInit {
   // dependency injection
   constructor(
     private route: ActivatedRoute,
-    private restaurantService: RestaurantService
+    private restaurantService: RestaurantService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   // runs once when the component is created (when the route matches)
@@ -39,6 +40,7 @@ export class RestaurantDetailComponent implements OnInit {
     this.restaurantService.getRestaurantById(this.restaurantId).subscribe({
       next: (data) => {
         this.restaurant = data; // json sent from backend becomes the js object
+        this.cdr.detectChanges();
         console.log('Loaded restaurant:', data);
       },
       error: (err) => {
@@ -51,6 +53,13 @@ export class RestaurantDetailComponent implements OnInit {
     this.restaurantService.getCategoriesByRestaurant(this.restaurantId).subscribe({
       next: (data) => { // backend sends json, angular converts it into js obj
         this.categories = data;
+
+        // first category selected by default
+        if (this.categories.length > 0) {
+          const firstCategoryId = this.categories[0].id;
+          this.loadDishes(firstCategoryId);
+        }
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('Failed to load categories', err);
@@ -67,6 +76,7 @@ export class RestaurantDetailComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.dishes = data;
+          this.cdr.detectChanges();
         },
         error: (err) => {
           console.error('Failed to load dishes', err);
