@@ -56,5 +56,24 @@ export class RestaurantDetailComponent implements OnInit {
       }
     });
   }
-  
+
+  // called when user clicks on a category
+  loadDishes(categoryId: number) {
+    this.activeCategoryId = categoryId;
+
+    this.restaurantService
+      .getDishesByCategory(this.restaurantId, categoryId)
+      .subscribe({
+        next: (data) => {
+          this.dishes = data;
+        },
+        error: (err) => {
+          console.error('Failed to load dishes', err);
+        }
+      });
+  }
+
 }
+
+
+
