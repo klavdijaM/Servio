@@ -29,8 +29,13 @@ export class App implements OnInit {
   allRestaurants: Restaurant[] = []; // full, unfiltered list
   showFiltersModal = false;
 
-  @ViewChild('mobileFilters')
-  mobileFiltersComponent!: RestaurantFiltersComponent;
+  activeFilters: RestaurantFilters = {
+    freeDelivery: false,
+    maxDeliveryTime: null,
+    minRating: null,
+    maxMinOrder: null
+  };
+
 
 
   constructor(
@@ -129,9 +134,10 @@ export class App implements OnInit {
   }
 
   applyMobileFilters() {
-    this.mobileFiltersComponent.applyFilters();
+    this.onFiltersChanged(this.activeFilters);
     this.showFiltersModal = false;
   }
+
 
 
 

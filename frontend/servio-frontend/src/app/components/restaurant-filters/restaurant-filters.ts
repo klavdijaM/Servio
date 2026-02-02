@@ -19,14 +19,7 @@ export interface RestaurantFilters {
 export class RestaurantFiltersComponent {
 
   @Input() autoApply = false; // don't auto-apply by default unless the parent says so
-
-  // UI state: reflects what the user selected
-  filters: RestaurantFilters = {
-    freeDelivery: false,
-    maxDeliveryTime: null,
-    minRating: null,
-    maxMinOrder: null
-  };
+  @Input() filters!: RestaurantFilters; // receives filters from parent
 
   // without events, child can't talk to the parent component (app)
   @Output() filtersChanged = new EventEmitter<RestaurantFilters>();

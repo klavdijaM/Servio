@@ -34,6 +34,7 @@
     <div class="filters-desktop">
       <!-- event is the new filters object -->
       <app-restaurant-filters
+        [filters]="activeFilters"
         [autoApply]="true"
         (filtersChanged)="onFiltersChanged($event)">
       </app-restaurant-filters>
@@ -51,6 +52,7 @@
       <div class="filters-popup">
         <app-restaurant-filters
           #mobileFilters
+          [filters]="activeFilters"
           [autoApply]="false"
           (filtersChanged)="onFiltersChanged($event)">
         </app-restaurant-filters>
