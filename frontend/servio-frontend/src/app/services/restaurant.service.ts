@@ -25,4 +25,9 @@ export class RestaurantService {
   getRestaurants() {
     return this.http.get<Restaurant[]>(this.apiUrl); // returns array of restaurant objects
   }
+
+  getRestaurantById(id: number) {
+    return this.http.get<Restaurant>(`${this.apiUrl}/${id}`);
+  }
+
 }
