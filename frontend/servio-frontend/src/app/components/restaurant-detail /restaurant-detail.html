@@ -1,3 +1,81 @@
-<section>
-  <h1>Restaurant {{ restaurantId }}</h1>
+<!-- HERO IMAGE -->
+@if (restaurant) {
+  <section
+    class="restaurant-hero"
+    [style.backgroundImage]="'url(' + getRestaurantImage(restaurant.name) + ')'"
+  ></section>
+}
+
+<section class="restaurant-detail">
+
+  <!-- RESTAURANT HEADER -->
+  @if (restaurant) {
+    <div class="restaurant-header">
+      <h1 class="restaurant-name">
+        {{ restaurant.name }}
+      </h1>
+
+      <div class="restaurant-meta">
+        @if (restaurant.rating !== null) {
+          <span>
+            ⭐ {{ restaurant.rating }} ({{ restaurant.rating_count }})
+          </span>
+        }
+
+        <span>
+          ⏱️ {{ restaurant.delivery_time }} min
+        </span>
+
+        <span>
+          @if (restaurant.delivery_fee === 0) {
+            Free delivery
+          } @else {
+            Delivery €{{ restaurant.delivery_fee.toFixed(2) }}
+          }
+        </span>
+
+        <span>
+          @if (restaurant.minimum_order_value > 0) {
+            Min €{{ restaurant.minimum_order_value.toFixed(2) }}
+          } @else {
+            No min order
+          }
+        </span>
+      </div>
+    </div>
+  }
+
+  <!-- CATEGORIES -->
+  @if (categories.length > 0) {
+    <div class="categories">
+      @for (category of categories; track category.id) {
+        <button
+          class="category-btn"
+          (click)="loadDishes(category.id)"
+          [class.active]="category.id === activeCategoryId"
+        >
+          {{ category.name }}
+        </button>
+      }
+    </div>
+  }
+
+  <!-- DISHES -->
+  @if (dishes.length > 0) {
+    <div class="dishes">
+      @for (dish of dishes; track dish.id) {
+        <div class="dish-card">
+          <div class="dish-info">
+            <h3>{{ dish.name }}</h3>
+            <p>{{ dish.description }}</p>
+          </div>
+
+          <div class="dish-price">
+            €{{ dish.price.toFixed(2) }}
+          </div>
+        </div>
+      }
+    </div>
+  }
+
 </section>

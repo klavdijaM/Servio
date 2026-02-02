@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RestaurantService, Restaurant } from '../../services/restaurant.service';
+import { RESTAURANTS } from '../../data/restaurants';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -72,6 +73,12 @@ export class RestaurantDetailComponent implements OnInit {
         }
       });
   }
+
+  getRestaurantImage(name: string): string {
+    const match = RESTAURANTS.find(r => r.name === name);
+    return match ? match.image : 'assets/restaurants/placeholder.webp';
+  }
+
 
 }
 
