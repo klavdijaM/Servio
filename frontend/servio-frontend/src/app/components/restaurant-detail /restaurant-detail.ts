@@ -5,7 +5,7 @@ import { RestaurantService, Restaurant } from '../../services/restaurant.service
 
 @Component({
   selector: 'app-restaurant-detail',
-  standalone: true,
+  standalone: true, // doesn't belong to a module, declares its own dependencies
   imports: [CommonModule],
   templateUrl: './restaurant-detail.html',
   styleUrl: './restaurant-detail.css'
@@ -15,16 +15,25 @@ export class RestaurantDetailComponent implements OnInit {
 
   restaurantId!: number;
   restaurant!: Restaurant; // starts as undefined
+  categories: { id: number; name: string }[] = [];
+  dishes: { id: number; name: string; description: string; price: number }[] = [];
+  activeCategoryId: number | null = null; // currently selected category
 
+  // dependency injection
   constructor(
     private route: ActivatedRoute,
     private restaurantService: RestaurantService
   ) {}
 
-  // runs once when the component is created (route matches)
+  // runs once when the component is created (when the route matches)
   ngOnInit() {
-    this.restaurantId = Number(this.route.snapshot.paramMap.get('id'));
 
+    this.restaurantId = Number(this.route.snapshot.paramMap.get('id'));
+    this.loadRestaurant();
+    this.loadCategories();
+  }
+
+  private loadRestaurant() {
     // calls backend endpoint (GET http://localhost:3000/restaurants/7)
     this.restaurantService.getRestaurantById(this.restaurantId).subscribe({
       next: (data) => {
@@ -36,4 +45,16 @@ export class RestaurantDetailComponent implements OnInit {
       }
     });
   }
+
+  private loadCategories() {
+    this.restaurantService.getCategoriesByRestaurant(this.restaurantId).subscribe({
+      next: (data) => { // backend sends json, angular converts it into js obj
+        this.categories = data;
+      },
+      error: (err) => {
+        console.error('Failed to load categories', err);
+      }
+    });
+  }
+  
 }

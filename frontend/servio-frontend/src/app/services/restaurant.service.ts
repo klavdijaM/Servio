@@ -30,4 +30,16 @@ export class RestaurantService {
     return this.http.get<Restaurant>(`${this.apiUrl}/${id}`);
   }
 
+  getCategoriesByRestaurant(restaurantId: number) {
+    return this.http.get<{ id: number; name: string }[]>(
+      `${this.apiUrl}/${restaurantId}/categories`
+    );
+  }
+
+  getDishesByCategory(restaurantId: number, categoryId: number) {
+    return this.http.get<{ id: number; name: string; description: string; price: number }[]>(
+      `${this.apiUrl}/${restaurantId}/categories/${categoryId}/dishes`
+    );
+  }
+
 }
