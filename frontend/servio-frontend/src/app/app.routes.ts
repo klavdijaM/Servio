@@ -1,8 +1,12 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home';
 import {RestaurantDetailComponent} from './components/restaurant-detail /restaurant-detail';
 
 export const routes: Routes = [
-  // when url matches, Angular destroys previous view and creates the component
+  {
+    path: '',
+    component: HomeComponent
+  },
   {
     path: 'restaurants/:id',
     component: RestaurantDetailComponent
