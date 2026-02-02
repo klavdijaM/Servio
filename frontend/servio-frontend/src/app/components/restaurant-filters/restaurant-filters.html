@@ -1,13 +1,12 @@
 <div class="filters">
 
   <label class="filter-item">
-    <!-- ngModel: connects input to a variable -->
+    Free delivery
     <input
       type="checkbox"
       [(ngModel)]="filters.freeDelivery"
-      (change)="onFiltersChange()"
+      (ngModelChange)="onValueChanged()"
     />
-    Free delivery
   </label>
 
   <label class="filter-item">
@@ -16,7 +15,7 @@
       type="number"
       min="1"
       [(ngModel)]="filters.maxDeliveryTime"
-      (input)="onFiltersChange()"
+      (ngModelChange)="onValueChanged()"
       placeholder="e.g. 30"
     />
   </label>
@@ -29,7 +28,7 @@
       max="5"
       step="0.1"
       [(ngModel)]="filters.minRating"
-      (input)="onFiltersChange()"
+      (ngModelChange)="onValueChanged()"
       placeholder="e.g. 4"
     />
   </label>
@@ -40,7 +39,7 @@
       type="number"
       min="0"
       [(ngModel)]="filters.maxMinOrder"
-      (input)="onFiltersChange()"
+      (ngModelChange)="onValueChanged()"
       placeholder="e.g. 15"
     />
   </label>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -18,6 +18,8 @@ export interface RestaurantFilters {
 })
 export class RestaurantFiltersComponent {
 
+  @Input() autoApply = false; // don't auto-apply by default unless the parent says so
+
   // UI state: reflects what the user selected
   filters: RestaurantFilters = {
     freeDelivery: false,
@@ -30,7 +32,14 @@ export class RestaurantFiltersComponent {
   @Output() filtersChanged = new EventEmitter<RestaurantFilters>();
 
   // will be called when a checkbox/input changes
-  onFiltersChange() {
+  applyFilters() {
     this.filtersChanged.emit({ ...this.filters }); // sends a copy of the new filters object to the parent
   }
+
+  onValueChanged() {
+    if (this.autoApply) {
+      this.applyFilters();
+    }
+  }
+
 }

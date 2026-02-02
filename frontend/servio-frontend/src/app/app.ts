@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { RegisterModal } from './components/register-modal/register-modal';
 import { RegistrationSuccessModal } from './components/registration-success-modal/registration-success-modal';
@@ -28,6 +28,9 @@ export class App implements OnInit {
   restaurants: Restaurant[] = [];
   allRestaurants: Restaurant[] = []; // full, unfiltered list
   showFiltersModal = false;
+
+  @ViewChild('mobileFilters')
+  mobileFiltersComponent!: RestaurantFiltersComponent;
 
 
   constructor(
@@ -120,13 +123,17 @@ export class App implements OnInit {
     });
   }
 
-  openFilters() {
-    this.showFiltersModal = true;
-  }
 
   toggleFilters() {
     this.showFiltersModal = !this.showFiltersModal;
   }
+
+  applyMobileFilters() {
+    this.mobileFiltersComponent.applyFilters();
+    this.showFiltersModal = false;
+  }
+
+
 
 
 

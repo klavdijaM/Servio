@@ -34,6 +34,7 @@
     <div class="filters-desktop">
       <!-- event is the new filters object -->
       <app-restaurant-filters
+        [autoApply]="true"
         (filtersChanged)="onFiltersChanged($event)">
       </app-restaurant-filters>
     </div>
@@ -49,12 +50,14 @@
     @if (showFiltersModal) {
       <div class="filters-popup">
         <app-restaurant-filters
+          #mobileFilters
+          [autoApply]="false"
           (filtersChanged)="onFiltersChanged($event)">
         </app-restaurant-filters>
 
         <button
           class="apply-filters-btn"
-          (click)="toggleFilters()">
+          (click)="applyMobileFilters()">
           Apply filters
         </button>
       </div>
