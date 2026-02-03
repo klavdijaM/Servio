@@ -8,9 +8,13 @@ function createReview(req, res) {
     if(!restaurantId || !rating){
         return res.status(400).json({error: 'Missing required review data'});
     }
-    if(rating < 1 || rating > 5) {
-        return res.status(400).json({error: 'Rating must be between 1 and 5'});
+
+    const numericRating = Number(rating);
+
+    if (!Number.isInteger(numericRating) || numericRating < 1 || numericRating > 5) {
+        return res.status(400).json({ error: 'Rating must be an integer between 1 and 5' });
     }
+
 
     const query = `
     INSERT INTO reviews (user_id, restaurant_id, rating, comment)
@@ -18,13 +22,23 @@ function createReview(req, res) {
 
     db.run(
         query,
-        [userId, restaurantId, rating, comment ?? null],
+        [userId, restaurantId, numericRating, comment ?? null],
         (err) => {
             if (err) {
                 return res.status(400).json({error: 'Failed to create review'});
             }
 
-            res.status(201).json({message: 'Review created'});
+            res.status(201).json({
+                message: 'Review created',
+                review: {
+                    userId,
+                    restaurantId,
+                    rating: numericRating,
+                    comment: comment ?? null,
+                    created_at: new Date().toISOString()
+                }
+            });
+
         }
     );
 }
@@ -34,7 +48,7 @@ function getReviewsByRestaurant(req, res) {
     const restaurantId = req.params.id;
 
     const query = `
-    SELECT r.id, r.rating, r.comment, r.created_at, u.email AS user_email
+    SELECT r.id, r.rating, r.comment, r.created_at, u.username AS username
     FROM reviews r
     JOIN users u ON u.id = r.user_id --finds the user whose users.id matches reviews.user_id, and attaches their data to the same row
     WHERE r.restaurant_id = ?
