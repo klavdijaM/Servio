@@ -20,4 +20,9 @@ export class NavbarComponent {
       this.router.navigate(['/profile']);
     }
   }
+
+  goHome() {
+    this.router.navigate(['/']);
+  }
+
 }
