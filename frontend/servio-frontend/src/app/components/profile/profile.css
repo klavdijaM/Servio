@@ -1,0 +1,103 @@
+.profile-page {
+  padding: 130px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fdeeee;
+}
+
+.profile-page h1 {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  padding: 32px;
+  border-radius: 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  gap: 6px;
+}
+
+input {
+  padding: 12px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  border-color: #f8bebc;
+  box-shadow: 0 0 0 3px rgba(248, 190, 188, 0.35);
+}
+
+.error {
+  font-size: 13px;
+  color: #c0392b;
+  margin-top: -6px;
+}
+
+.success {
+  font-size: 14px;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+button {
+  margin-top: 10px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+  background: #f8bebc;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  background: #e4a9a7;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .profile-page h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    padding: 24px;
+  }
+}
