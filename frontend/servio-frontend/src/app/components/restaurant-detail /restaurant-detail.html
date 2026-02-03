@@ -78,4 +78,68 @@
     </div>
   }
 
+  <!-- REVIEWS -->
+  <div class="reviews-section">
+
+    <h2>Reviews</h2>
+
+    <!-- POST REVIEW FORM (logged-in users only) -->
+    @if (authService.isLoggedIn()) {
+      <div class="review-form">
+
+        <label>
+          ⭐ Rating
+          <input
+            type="number"
+            min="1"
+            max="5"
+            [(ngModel)]="newRating"
+          />
+        </label>
+
+        <label>
+          Comment
+          <textarea
+            rows="3"
+            [(ngModel)]="newComment"
+            placeholder="Write your review (optional)"
+          ></textarea>
+        </label>
+
+        @if (reviewError) {
+          <p class="error">{{ reviewError }}</p>
+        }
+
+        @if (reviewSuccess) {
+          <p class="success">{{ reviewSuccess }}</p>
+        }
+
+        <button (click)="submitReview()">Submit review</button>
+
+      </div>
+    }
+
+    <!-- REVIEWS LIST -->
+    <div class="reviews-list">
+      @for (review of reviews; track review.id) {
+        <div class="review-card">
+          <div class="review-header">
+            <strong>{{ review.username }}</strong>
+            <span>⭐ {{ review.rating }}/5</span>
+          </div>
+
+          @if (review.comment) {
+            <p>{{ review.comment }}</p>
+          }
+
+          <small>
+            {{ review.created_at | date:'mediumDate' }}
+          </small>
+        </div>
+      }
+    </div>
+
+  </div>
+
+
 </section>

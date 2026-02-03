@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { RestaurantService, Restaurant } from '../../services/restaurant.service';
 import { RESTAURANTS } from '../../data/restaurants';
+import {AuthService} from '../../services/auth.service';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-restaurant-detail',
   standalone: true, // doesn't belong to a module, declares its own dependencies
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './restaurant-detail.html',
   styleUrl: './restaurant-detail.css'
 })
@@ -37,7 +40,8 @@ export class RestaurantDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public authService: AuthService
   ) {}
 
   // runs once when the component is created (when the route matches)
