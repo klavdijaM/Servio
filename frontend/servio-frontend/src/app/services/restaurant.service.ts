@@ -42,4 +42,30 @@ export class RestaurantService {
     );
   }
 
+  getReviewsByRestaurant(restaurantId: number) {
+    return this.http.get<{
+      id: number;
+      rating: number;
+      comment: string | null;
+      created_at: string;
+      username: string;
+    }[]>(`http://localhost:3000/restaurants/${restaurantId}/reviews`);
+  }
+
+  createReview(
+    restaurantId: number,
+    rating: number,
+    comment: string
+  ) {
+    return this.http.post(
+      'http://localhost:3000/reviews',
+      { restaurantId, rating, comment },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('auth_token')}`
+        }
+      }
+    );
+  }
+
 }
