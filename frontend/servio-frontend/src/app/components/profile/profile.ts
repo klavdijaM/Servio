@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
@@ -11,13 +11,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './profile.html',
   styleUrl: './profile.css'
 })
-export class ProfileComponent {
-  username = '';
+export class ProfileComponent implements OnInit {
+
   currentPassword = '';
   newPassword = '';
 
   currentPasswordError = '';
   successMessage = '';
+
+  currentusername = '';
+  newUsername = '';
+  usernameError = '';
+  usernameSuccess = '';
 
   constructor(
     private http: HttpClient,
@@ -52,6 +57,58 @@ export class ProfileComponent {
           this.currentPasswordError = 'Current password is not correct';
         } else {
           this.currentPasswordError = 'Failed to update password';
+        }
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.loadCurrentUser();
+  }
+
+  loadCurrentUser() {
+    this.http.get<any>(
+      'http://localhost:3000/users/me',
+      {
+        headers: {
+          Authorization: `Bearer ${this.authService.getToken()}`
+        }
+      }
+    ).subscribe({
+      next: (user) => {
+        this.currentusername = user.username;
+      },
+      error: () => {
+        console.error('Failed to load user data');
+      }
+    });
+  }
+
+  changeUsername() {
+    this.usernameError = '';
+    this.usernameSuccess = '';
+
+    this.http.put(
+      'http://localhost:3000/users/username',
+      {
+        newUsername: this.newUsername
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${this.authService.getToken()}`
+        }
+      }
+    ).subscribe({
+      next: () => {
+        this.currentusername = this.newUsername;
+        this.newUsername = '';
+        this.usernameSuccess = 'Username updated successfully';
+      },
+      error: (err) => {
+        if (err.status === 409) {
+          this.usernameError = 'Username already taken';
+        } else {
+          this.usernameError = 'Failed to update username';
         }
       }
     });

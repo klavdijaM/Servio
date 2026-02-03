@@ -71,7 +71,7 @@
           <input
             type="text"
             name="currentUsername"
-            [(ngModel)]="username"
+            [(ngModel)]="currentusername"
             disabled
           />
         </label>
@@ -94,8 +94,17 @@
           </p>
         }
 
+        @if (usernameError) {
+          <p class="error">{{ usernameError }}</p>
+        }
+
+        @if (usernameSuccess) {
+          <p class="success">{{ usernameSuccess }}</p>
+        }
+
         <button
           type="button"
+          (click)="changeUsername()"
           [disabled]="usernameForm.invalid"
         >
           Update username
