@@ -52,7 +52,7 @@
 
         <button
           type="button"
-          (click)="changePassword()"
+          (click)="changePassword(passwordForm)"
           [disabled]="passwordForm.invalid"
         >
           Update password
@@ -70,9 +70,8 @@
           Current username
           <input
             type="text"
-            name="currentUsername"
-            [(ngModel)]="currentusername"
-            disabled
+            [value]="currentUsername"
+            readonly
           />
         </label>
 
@@ -104,7 +103,7 @@
 
         <button
           type="button"
-          (click)="changeUsername()"
+          (click)="changeUsername(usernameForm)"
           [disabled]="usernameForm.invalid"
         >
           Update username

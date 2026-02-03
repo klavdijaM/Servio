@@ -86,7 +86,7 @@ function login(req, res) {
                 email: user.email,
             },
             JWT_SECRET,
-            {expiresIn: '2h'}
+            {expiresIn: '7d'}
         );
 
         res.json({

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
@@ -19,17 +19,18 @@ export class ProfileComponent implements OnInit {
   currentPasswordError = '';
   successMessage = '';
 
-  currentusername = '';
+  currentUsername = '';
   newUsername = '';
   usernameError = '';
   usernameSuccess = '';
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef
   ) {}
 
-  changePassword() {
+  changePassword(form: any) {
     this.currentPasswordError = '';
     this.successMessage = '';
 
@@ -48,21 +49,24 @@ export class ProfileComponent implements OnInit {
     ).subscribe({
       next: () => {
         this.successMessage = 'Password updated successfully';
-        this.currentPassword = '';
-        this.newPassword = '';
+        form.resetForm();
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.currentPasswordError = '';
         if (err.status === 401) {
           this.currentPasswordError = 'Current password is not correct';
+          this.cdr.detectChanges();
         } else {
           this.currentPasswordError = 'Failed to update password';
+          this.cdr.detectChanges();
         }
       }
     });
   }
 
   ngOnInit() {
+    console.log('ProfileComponent INIT');
     this.loadCurrentUser();
   }
 
@@ -76,7 +80,8 @@ export class ProfileComponent implements OnInit {
       }
     ).subscribe({
       next: (user) => {
-        this.currentusername = user.username;
+        this.currentUsername = user.username;
+        this.cdr.detectChanges();
       },
       error: () => {
         console.error('Failed to load user data');
@@ -84,7 +89,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  changeUsername() {
+  changeUsername(form: any) {
     this.usernameError = '';
     this.usernameSuccess = '';
 
@@ -100,15 +105,18 @@ export class ProfileComponent implements OnInit {
       }
     ).subscribe({
       next: () => {
-        this.currentusername = this.newUsername;
-        this.newUsername = '';
+        this.currentUsername = this.newUsername;
         this.usernameSuccess = 'Username updated successfully';
+        form.resetForm();
+        this.cdr.detectChanges();
       },
       error: (err) => {
         if (err.status === 409) {
           this.usernameError = 'Username already taken';
+          this.cdr.detectChanges();
         } else {
           this.usernameError = 'Failed to update username';
+          this.cdr.detectChanges();
         }
       }
     });
