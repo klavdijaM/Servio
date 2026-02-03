@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   storeToken(token: string) {
-    localStorage.setItem(this.TOKEN_KEY, token);
+    localStorage.setItem(this.TOKEN_KEY, token); // creates a key value pair
   }
 
   getToken(): string | null {
@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean{
-    return !!this.getToken();
+    return !!this.getToken(); // if the token exists
   }
 
   logout() {
