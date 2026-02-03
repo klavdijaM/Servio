@@ -14,6 +14,7 @@
       class="icon-btn"
       [class.disabled]="!authService.isLoggedIn()"
       aria-label="User profile"
+      (click)="goToProfile()"
     >
       <img src="assets/user-icon.png" alt="User" />
     </button>
