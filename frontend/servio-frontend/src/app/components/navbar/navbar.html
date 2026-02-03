@@ -1,0 +1,30 @@
+<nav class="navbar">
+
+  <div class="navbar-left">
+    <img
+      src="assets/logo.png"
+      alt="Servio logo"
+      class="logo"
+    />
+  </div>
+
+  <div class="navbar-right">
+
+    <button
+      class="icon-btn"
+      [class.disabled]="!authService.isLoggedIn()"
+      aria-label="User profile"
+    >
+      <img src="assets/user-icon.png" alt="User" />
+    </button>
+
+    <button
+      class="icon-btn"
+      [class.disabled]="!authService.isLoggedIn()"
+      aria-label="Cart"
+    >
+      <img src="assets/cart-icon.png" alt="Cart" />
+    </button>
+
+  </div>
+</nav>
