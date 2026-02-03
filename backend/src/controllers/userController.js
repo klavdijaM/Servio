@@ -6,7 +6,7 @@ function getCurrentUser(req, res) {
     const userId = req.user.id;
 
     const query = `
-        SELECT id, email, delivery_zone_id
+        SELECT id, username, email, delivery_zone_id
         FROM users
         WHERE id = ?
     `;
@@ -71,7 +71,40 @@ function updatePassword(req, res) {
     })
 }
 
+// PUT /users/username
+function updateUsername(req, res) {
+    const userId = req.user.id;
+    const { newUsername } = req.body;
+
+    if (!newUsername) {
+        return res.status(400).json({ error: 'Missing username' });
+    }
+
+    const query = `
+        UPDATE users
+        SET username = ?
+        WHERE id = ?
+    `;
+
+    db.run(query, [newUsername, userId], function (err) {
+        if (err) {
+            if (err.message.includes('UNIQUE')) {
+                return res.status(409).json({ error: 'Username already taken' });
+            }
+            return res.status(500).json({ error: 'Database error' });
+        }
+
+        res.json({
+            message: 'Username updated successfully',
+            username: newUsername
+        });
+    });
+}
+
+
+
 module.exports = {
     getCurrentUser,
-    updatePassword
+    updatePassword,
+    updateUsername
 };
