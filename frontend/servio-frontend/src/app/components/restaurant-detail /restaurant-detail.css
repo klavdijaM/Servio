@@ -75,6 +75,23 @@
 }
 
 @media (max-width: 768px){
+  .restaurant-detail {
+    padding: 24px 25px;
+  }
+
+  .categories {
+    overflow-x: auto;
+    overflow-y: hidden;
+    flex-wrap: nowrap;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .categories::-webkit-scrollbar {
+    display: none;
+  }
+
   .category-btn {
     font-size: 15px;
   }
