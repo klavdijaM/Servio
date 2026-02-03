@@ -1,10 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<section class="profile-page">
+  <h1>Account Settings</h1>
 
-</body>
-</html>
+  <div class="card">
+    <h2>Change Password</h2>
+
+    <form #passwordForm="ngForm">
+
+      <label>
+        Current password
+        <input
+          type="password"
+          name="currentPassword"
+          [(ngModel)]="currentPassword"
+          required
+          #currentPasswordModel="ngModel"
+        />
+      </label>
+
+      @if (currentPasswordError) {
+        <p class="error">
+          {{ currentPasswordError }}
+        </p>
+      }
+
+      <label>
+        New password
+        <input
+          type="password"
+          name="newPassword"
+          [(ngModel)]="newPassword"
+          required
+          minlength="6"
+          pattern="^(?=.*[A-Za-z])(?=.*\d).{6,}$"
+          #newPasswordModel="ngModel"
+        />
+      </label>
+
+      @if (newPasswordModel.invalid && newPasswordModel.touched) {
+        <p class="error">
+          * Password must be at least 6 characters long and contain letters and numbers
+        </p>
+      }
+
+      @if (successMessage) {
+        <p class="success">
+          {{ successMessage }}
+        </p>
+      }
+
+      <button
+        type="button"
+        (click)="changePassword()"
+        [disabled]="passwordForm.invalid"
+      >
+        Update password
+      </button>
+
+    </form>
+  </div>
+</section>
