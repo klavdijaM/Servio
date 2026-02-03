@@ -20,6 +20,19 @@ export class RestaurantDetailComponent implements OnInit {
   dishes: { id: number; name: string; description: string; price: number }[] = [];
   activeCategoryId: number | null = null; // currently selected category
 
+  reviews: {
+    id: number;
+    rating: number;
+    comment: string | null;
+    created_at: string;
+    username: string;
+  }[] = [];
+
+  newRating = 5;
+  newComment = '';
+  reviewError = '';
+  reviewSuccess = '';
+
   // dependency injection
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +46,7 @@ export class RestaurantDetailComponent implements OnInit {
     this.restaurantId = Number(this.route.snapshot.paramMap.get('id'));
     this.loadRestaurant();
     this.loadCategories();
+    this.loadReviews();
   }
 
   private loadRestaurant() {
@@ -92,6 +106,48 @@ export class RestaurantDetailComponent implements OnInit {
     const match = RESTAURANTS.find(r => r.name === name);
     return match ? match.image : 'assets/restaurants/placeholder.webp';
   }
+
+  loadReviews() {
+    this.restaurantService
+      .getReviewsByRestaurant(this.restaurantId)
+      .subscribe({
+        next: (data) => {
+          this.reviews = data;
+          this.cdr.detectChanges();
+        },
+        error: () => {
+          console.error('Failed to load reviews');
+        }
+      });
+  }
+
+  submitReview() {
+    this.reviewError = '';
+    this.reviewSuccess = '';
+
+    this.restaurantService
+      .createReview(
+        this.restaurantId,
+        this.newRating,
+        this.newComment
+      )
+      .subscribe({
+        next: () => {
+          this.reviewSuccess = 'Review submitted successfully';
+          this.newRating = 5;
+          this.newComment = '';
+          this.loadReviews(); // refresh list
+        },
+        error: (err) => {
+          this.reviewError =
+            err.error?.error || 'Failed to submit review';
+        }
+      });
+  }
+
+
+
+
 
 
 }
