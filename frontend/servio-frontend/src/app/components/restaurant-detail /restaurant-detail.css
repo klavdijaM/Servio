@@ -74,6 +74,105 @@
   color: #7a7a7a;
 }
 
+.reviews-section {
+  margin-top: 48px;
+}
+
+.reviews-section h2 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+/* REVIEWS */
+
+.review-form {
+  background: rgba(253, 231, 231, 0.38);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.review-form label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.review-form label:first-of-type {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-form input[type="number"] {
+  width: 70px;
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.review-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.review-form button {
+  align-self: flex-start;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid #f8bebc;
+  background: #f8bebc;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.review-form button:hover {
+  background: #e4a9a7;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.review-card {
+  background: rgba(253, 231, 231, 0.38);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.review-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.review-card small {
+  font-size: 12px;
+  color: #888;
+}
+
+
+
 @media (max-width: 768px){
   .restaurant-detail {
     padding: 24px 25px;
@@ -98,6 +197,14 @@
 
   .dish-info h3 {
     font-size: 17px;
+  }
+
+  .reviews-section h2 {
+    font-size: 22px;
+  }
+
+  .review-form {
+    padding: 16px;
   }
 }
 

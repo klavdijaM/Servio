@@ -141,6 +141,8 @@ export class RestaurantDetailComponent implements OnInit {
           this.newRating = 5;
           this.newComment = '';
           this.loadReviews(); // refresh list
+          this.loadRestaurant(); // refreshes restaurant metadata
+          this.cdr.detectChanges();
         },
         error: (err) => {
           this.reviewError =
