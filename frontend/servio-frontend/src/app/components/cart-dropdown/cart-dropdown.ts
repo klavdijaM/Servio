@@ -1,9 +1,7 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-
 import { CartService, CartItem } from '../../services/cart.service';
-import { Restaurant } from '../../services/restaurant.service';
 
 @Component({
   selector: 'app-cart-dropdown',
@@ -34,7 +32,7 @@ export class CartDropdownComponent implements OnInit, OnDestroy {
     // Subscribe to cart changes
     this.cartSub = this.cartService.items$.subscribe(items => { // every time a new value is emitted, the callback runs
       this.items = items; // UI list gets updated
-      this.total = this.cartService.getTotal();
+      this.total = this.cartService.getTotal(); // recomputed every time the cart changes
     });
   }
 
