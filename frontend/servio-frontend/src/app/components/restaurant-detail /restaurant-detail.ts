@@ -5,6 +5,7 @@ import { RestaurantService, Restaurant } from '../../services/restaurant.service
 import { RESTAURANTS } from '../../data/restaurants';
 import {AuthService} from '../../services/auth.service';
 import { FormsModule } from '@angular/forms';
+import {CartService} from '../../services/cart.service';
 
 
 @Component({
@@ -41,7 +42,8 @@ export class RestaurantDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private restaurantService: RestaurantService,
     private cdr: ChangeDetectorRef,
-    public authService: AuthService
+    public authService: AuthService,
+    private cartService: CartService,
   ) {}
 
   // runs once when the component is created (when the route matches)
@@ -150,6 +152,21 @@ export class RestaurantDetailComponent implements OnInit {
         }
       });
   }
+
+  addToCart(dish: { id: number; name: string; price: number }) {
+    try {
+      this.cartService.addItem({
+        dishId: dish.id,
+        name: dish.name,
+        price: dish.price,
+        quantity: 1,
+        restaurantId: this.restaurantId
+      });
+    } catch (err: any) {
+      alert(err.message);
+    }
+  }
+
 
 
 

@@ -70,6 +70,21 @@
             <p>{{ dish.description }}</p>
           </div>
 
+          <div class="dish-actions">
+            <span class="dish-price">
+              €{{ dish.price.toFixed(2) }}
+            </span>
+
+            <button
+              class="add-to-cart-btn"
+              [disabled]="!authService.isLoggedIn()"
+              (click)="addToCart(dish)"
+              aria-label="Add to cart"
+            >
+              🛒
+            </button>
+          </div>
+
           <div class="dish-price">
             €{{ dish.price.toFixed(2) }}
           </div>
