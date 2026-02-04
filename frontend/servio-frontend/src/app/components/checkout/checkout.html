@@ -1,10 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<section class="checkout-page">
 
-</body>
-</html>
+  <h1 class="checkout-title">Checkout</h1>
+
+  @if (restaurant) {
+    <p class="restaurant-name">
+      Ordering from <strong>{{ restaurant.name }}</strong>
+    </p>
+  }
+
+  <div class="checkout-items">
+
+    @for (item of items; track item.dishId) {
+      <div class="checkout-item">
+
+        <div class="item-left">
+          <span class="item-name">
+            {{ item.name }}
+          </span>
+          <span class="item-quantity">
+            × {{ item.quantity }}
+          </span>
+        </div>
+
+        <div class="item-right">
+          €{{ (item.price * item.quantity).toFixed(2) }}
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+  <div class="checkout-summary">
+
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <span>€{{ subtotal.toFixed(2) }}</span>
+    </div>
+
+    <div class="summary-row">
+      <span>Delivery fee</span>
+      <span>€{{ deliveryFee.toFixed(2) }}</span>
+    </div>
+
+    <div class="summary-row total">
+      <span>Total</span>
+      <span>€{{ total.toFixed(2) }}</span>
+    </div>
+
+  </div>
+
+  <div class="checkout-actions">
+
+    <button
+      class="back-btn"
+      (click)="goBackToCart()"
+    >
+      Back to cart
+    </button>
+
+    <button
+      class="place-order-btn"
+      (click)="placeOrder()"
+    >
+      Place order
+    </button>
+
+  </div>
+
+</section>
