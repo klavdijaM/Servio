@@ -81,13 +81,14 @@
               (click)="addToCart(dish)"
               aria-label="Add to cart"
             >
-              🛒
+              <img
+                src="assets/shopping-cart.png"
+                alt=""
+                class="cart-icon"
+              />
             </button>
           </div>
 
-          <div class="dish-price">
-            €{{ dish.price.toFixed(2) }}
-          </div>
         </div>
       }
     </div>

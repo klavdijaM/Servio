@@ -74,6 +74,41 @@
   color: #7a7a7a;
 }
 
+.dish-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-to-cart-btn {
+  border: 1px solid #f8bebc;
+  background: #f8bebc;
+  border-radius: 999px;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-to-cart-btn:hover {
+  background: #e4a9a7;
+}
+
+.add-to-cart-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cart-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+
+
 .reviews-section {
   margin-top: 48px;
 }
