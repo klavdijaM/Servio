@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,8 @@ import {Router} from '@angular/router';
 export class NavbarComponent {
   constructor(
     public authService: AuthService, // public to make it accessible in html
-    private router: Router,) {}
+    private router: Router,
+    public cartService: CartService) {}
 
   goToProfile() {
     if (this.authService.isLoggedIn()) {
@@ -23,6 +25,10 @@ export class NavbarComponent {
 
   goHome() {
     this.router.navigate(['/']);
+  }
+
+  get cartCount(): number {
+    return this.cartService.getItemCount();
   }
 
 }

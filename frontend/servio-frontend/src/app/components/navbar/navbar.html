@@ -26,6 +26,12 @@
       aria-label="Cart"
     >
       <img src="assets/cart-icon.png" alt="Cart" />
+
+      @if (cartCount > 0) {
+        <span class="cart-badge">
+          {{ cartCount }} <!-- dynamic => calls the function every time Angular detects a change on screen and reflects the change in html -->
+        </span>
+      }
     </button>
 
   </div>
