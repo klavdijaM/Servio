@@ -24,6 +24,7 @@
       class="icon-btn"
       [class.disabled]="!authService.isLoggedIn()"
       aria-label="Cart"
+      (click)="toggleCart()"
     >
       <img src="assets/cart-icon.png" alt="Cart" />
 
@@ -36,3 +37,8 @@
 
   </div>
 </nav>
+
+<app-cart-dropdown
+  [isOpen]="isCartOpen">
+</app-cart-dropdown>
+
