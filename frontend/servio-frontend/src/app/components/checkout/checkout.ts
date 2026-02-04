@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService, CartItem } from '../../services/cart.service';
 import { RestaurantService, Restaurant } from '../../services/restaurant.service';
+import {Voucher, VoucherService} from '../../services/voucher.service';
 
 @Component({
   selector: 'app-checkout',
@@ -21,9 +22,16 @@ export class CheckoutComponent implements OnInit {
 
   restaurant: Restaurant | null = null;
 
+  voucherCode = '';
+  voucherError = '';
+  appliedVoucher: Voucher | null = null;
+  discountAmount = 0;
+
+
   constructor(
     private cartService: CartService,
     private restaurantService: RestaurantService,
+    private voucherService: VoucherService,
     private router: Router
   ) {}
 
@@ -56,7 +64,70 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrder() {
-    // TEMPORARY
-    alert('Order placed');
+    alert('Order placed successfully!');
+    this.cartService.clearCart();
+    this.router.navigate(['/']);
   }
+
+  applyVoucher() {
+    // reset previous state if user tried out multiple vouchers
+    this.voucherError = '';
+    this.discountAmount = 0;
+
+    if (!this.voucherCode.trim()) {
+      this.voucherError = 'Please enter a voucher code';
+      return;
+    }
+
+    this.voucherService.validateVoucher(this.voucherCode.trim())
+      .subscribe({ // sends the HTTP post request to backend
+        next: (response) => { // backend responds successfully
+          if (!response.valid) {
+            this.voucherError = response.reason ?? 'Invalid voucher';
+            this.appliedVoucher = null;
+            this.recalculateTotal(); // no voucher discount anymore - we revert total
+            return;
+          }
+
+          this.appliedVoucher = response.voucher!;
+          this.calculateDiscount();
+        },
+        error: () => {
+          this.voucherError = 'Failed to validate voucher';
+        }
+      });
+  }
+
+  private calculateDiscount() {
+    if (!this.appliedVoucher) return;
+
+    if (this.appliedVoucher.discount_type === 'percentage') {
+      this.discountAmount =
+        (this.subtotal * this.appliedVoucher.discount_value) / 100;
+    }
+
+    if (this.appliedVoucher.discount_type === 'fixed') {
+      this.discountAmount = this.appliedVoucher.discount_value;
+    }
+
+    if (this.appliedVoucher.discount_type === 'free_delivery') {
+      this.discountAmount = this.deliveryFee;
+    }
+
+    this.recalculateTotal();
+  }
+
+
+  private recalculateTotal() {
+    this.total =
+      this.subtotal +
+      this.deliveryFee -
+      this.discountAmount;
+
+    if (this.total < 0) {
+      this.total = 0;
+    }
+  }
+
+
 }
