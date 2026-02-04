@@ -126,6 +126,33 @@
   text-decoration: underline;
 }
 
+.checkout-btn {
+  width: 100%;
+  padding: 10px 14px;
+
+  border-radius: 999px;
+  border: none;
+
+  background: #f8bebc;
+  color: #000;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.checkout-btn:hover:not(:disabled) {
+  background: #e4a9a7;
+}
+
+.checkout-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
 @media (max-width: 768px) {
   .cart-dropdown {
     right: 6px;

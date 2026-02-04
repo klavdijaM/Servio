@@ -38,6 +38,14 @@
         </div>
 
         <button
+          class="checkout-btn"
+          (click)="goToCheckout()"
+          [disabled]="isEmpty"
+        >
+          Go to checkout
+        </button>
+
+        <button
           class="clear-btn"
           (click)="clearCart()"
         >

@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import {Component, OnInit, OnDestroy, Input, EventEmitter, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 import { CartService, CartItem } from '../../services/cart.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart-dropdown',
@@ -14,6 +15,8 @@ export class CartDropdownComponent implements OnInit, OnDestroy {
 
   // Whether the dropdown is visible (controlled by navbar)
   @Input() isOpen = false;
+  @Output() close = new EventEmitter<void>();
+
 
   // Cart items currently in the cart
   items: CartItem[] = [];
@@ -24,7 +27,8 @@ export class CartDropdownComponent implements OnInit, OnDestroy {
   private cartSub?: Subscription;
 
   constructor(
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   // called when the component is created
@@ -56,4 +60,10 @@ export class CartDropdownComponent implements OnInit, OnDestroy {
   get isEmpty(): boolean {
     return this.items.length === 0;
   }
+
+  goToCheckout() {
+    this.close.emit(); // emits a close event to the parent (navbar)
+    this.router.navigate(['/checkout']);
+  }
+
 }

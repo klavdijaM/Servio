@@ -39,6 +39,7 @@
 </nav>
 
 <app-cart-dropdown
-  [isOpen]="isCartOpen">
+  [isOpen]="isCartOpen"
+  (close)="toggleCart()">
 </app-cart-dropdown>
 
