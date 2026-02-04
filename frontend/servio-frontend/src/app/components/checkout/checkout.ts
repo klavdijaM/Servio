@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CartService, CartItem } from '../../services/cart.service';
@@ -33,6 +33,7 @@ export class CheckoutComponent implements OnInit {
     private cartService: CartService,
     private restaurantService: RestaurantService,
     private voucherService: VoucherService,
+    private cdr: ChangeDetectorRef,
     private router: Router
   ) {}
 
@@ -53,6 +54,7 @@ export class CheckoutComponent implements OnInit {
         this.restaurant = restaurant;
         this.deliveryFee = restaurant.delivery_fee;
         this.total = this.subtotal + this.deliveryFee;
+        this.cdr.detectChanges();
       },
       error: () => {
         this.router.navigate(['/']);
@@ -87,11 +89,13 @@ export class CheckoutComponent implements OnInit {
             this.voucherError = response.reason ?? 'Invalid voucher';
             this.appliedVoucher = null;
             this.recalculateTotal(); // no voucher discount anymore - we revert total
+            this.cdr.detectChanges();
             return;
           }
 
           this.appliedVoucher = response.voucher!;
           this.calculateDiscount();
+          this.cdr.detectChanges();
         },
         error: () => {
           this.voucherError = 'Failed to validate voucher';
