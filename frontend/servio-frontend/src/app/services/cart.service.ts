@@ -25,6 +25,7 @@ export class CartService {
   // Observable that components can subscribe to => they can listen to it but not mutate
   items$ = this.itemsSubject.asObservable(); // read-only view of the cart
 
+  // if the user adds to cart and refreshes the page/closes browser, constructor makes sure the user gets their cart data displayed
   constructor() {
     const stored = localStorage.getItem(this.CART_KEY); // looks inside localstorage to find the value stored under the "cart_items" key
 

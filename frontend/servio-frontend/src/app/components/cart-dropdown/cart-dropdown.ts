@@ -1,0 +1,61 @@
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+
+import { CartService, CartItem } from '../../services/cart.service';
+import { Restaurant } from '../../services/restaurant.service';
+
+@Component({
+  selector: 'app-cart-dropdown',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './cart-dropdown.html',
+  styleUrl: './cart-dropdown.css'
+})
+export class CartDropdownComponent implements OnInit, OnDestroy {
+
+  // Whether the dropdown is visible (controlled by navbar)
+  @Input() isOpen = false;
+
+  // Cart items currently in the cart
+  items: CartItem[] = [];
+
+  // Total price of the cart
+  total = 0;
+
+  private cartSub?: Subscription;
+
+  constructor(
+    private cartService: CartService
+  ) {}
+
+  // called when the component is created
+  ngOnInit() {
+    // Subscribe to cart changes
+    this.cartSub = this.cartService.items$.subscribe(items => { // every time a new value is emitted, the callback runs
+      this.items = items; // UI list gets updated
+      this.total = this.cartService.getTotal();
+    });
+  }
+
+  // called when component is removed from DOM
+  ngOnDestroy() {
+    this.cartSub?.unsubscribe();
+  }
+
+  increase(item: CartItem) {
+    this.cartService.addItem(item);
+  }
+
+  decrease(item: CartItem) {
+    this.cartService.removeItem(item.dishId);
+  }
+
+  clearCart() {
+    this.cartService.clearCart();
+  }
+
+  get isEmpty(): boolean {
+    return this.items.length === 0;
+  }
+}
