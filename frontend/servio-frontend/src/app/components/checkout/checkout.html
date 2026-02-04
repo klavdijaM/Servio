@@ -28,6 +28,40 @@
 
       </div>
     }
+  </div>
+
+  <div class="voucher-section">
+
+    <label class="voucher-label">
+      Voucher code
+    </label>
+
+    <div class="voucher-input-row">
+      <input
+        type="text"
+        placeholder="Enter voucher code"
+        [(ngModel)]="voucherCode"
+      />
+
+      <button
+        class="apply-voucher-btn"
+        (click)="applyVoucher()"
+      >
+        Apply
+      </button>
+    </div>
+
+    @if (voucherError) {
+      <p class="voucher-error">
+        {{ voucherError }}
+      </p>
+    }
+
+    @if (appliedVoucher) {
+      <p class="voucher-success">
+        Voucher <strong>{{ appliedVoucher.code }}</strong> applied
+      </p>
+    }
 
   </div>
 
@@ -42,6 +76,13 @@
       <span>Delivery fee</span>
       <span>€{{ deliveryFee.toFixed(2) }}</span>
     </div>
+
+    @if (discountAmount > 0) {
+      <div class="summary-row discount">
+        <span>Discount</span>
+        <span>- €{{ discountAmount.toFixed(2) }}</span>
+      </div>
+    }
 
     <div class="summary-row total">
       <span>Total</span>

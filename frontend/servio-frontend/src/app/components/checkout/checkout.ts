@@ -4,11 +4,12 @@ import { Router } from '@angular/router';
 import { CartService, CartItem } from '../../services/cart.service';
 import { RestaurantService, Restaurant } from '../../services/restaurant.service';
 import {Voucher, VoucherService} from '../../services/voucher.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './checkout.html',
   styleUrl: './checkout.css'
 })
