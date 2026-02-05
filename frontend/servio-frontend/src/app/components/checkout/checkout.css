@@ -1,22 +1,17 @@
-
 .checkout-wrapper {
   min-height: 100vh;
   padding: 120px 16px 60px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(255, 241, 183, 0.55),
-    rgba(255, 241, 183, 0.35)
-  );
+  background: rgba(255, 241, 183, 0.45);
 
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: flex-start; /* keeps the box near the top, not centered vertically */
 }
 
 .checkout-page {
-  width: 100%;
-  max-width: 720px;
+  width: 100%; /* allows shrinking on mobile */
+  max-width: 720px; /* prevents being to wide on desktop */
   padding: 36px 40px;
 
   background: #ffffff;
@@ -49,7 +44,6 @@
   background: rgba(253, 231, 231, 0.38);
   padding: 14px 18px;
   border-radius: 14px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -87,7 +81,7 @@
 .voucher-label {
   font-size: 14px;
   font-weight: 500;
-  display: block;
+  display: block; /* forces it to sit in its own line */
   margin-bottom: 8px;
 }
 
@@ -97,7 +91,7 @@
 }
 
 .voucher-input-row input {
-  flex: 1;
+  flex: 1; /* takes all remaining space */
   padding: 11px 14px;
   border-radius: 12px;
   border: 1px solid #ccc;
