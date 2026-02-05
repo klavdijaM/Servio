@@ -132,5 +132,6 @@ export class OrderPageComponent implements OnInit, OnDestroy {
         clearInterval(this.intervalId);
       }
     }
+    this.cdr.detectChanges();
   }
 }
