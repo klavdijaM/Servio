@@ -1,0 +1,148 @@
+.order-wrapper {
+  min-height: 100vh;
+  padding: 120px 16px 60px;
+
+  background: rgba(255, 241, 183, 0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.order-page {
+  width: 100%;
+  max-width: 720px;
+  padding: 36px 40px;
+
+  background: #ffffff;
+  border-radius: 24px;
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.order-title {
+  font-size: 34px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.order-restaurant {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 32px;
+}
+
+/* DELIVERY STATUS — occupies same visual weight as voucher section */
+.delivery-status {
+  margin: 32px 0;
+  padding: 22px;
+
+  background: rgba(253, 231, 231, 0.38);
+  border-radius: 18px;
+}
+
+.delivery-heading {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.delivery-time {
+  font-size: 14px;
+  color: #555;
+}
+
+/* ORDER ITEMS — identical to checkout items */
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.order-item {
+  background: rgba(253, 231, 231, 0.38);
+  padding: 14px 18px;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.item-name {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.item-quantity {
+  font-size: 14px;
+  color: #777;
+}
+
+.item-right {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* ORDER META — mirrors checkout summary */
+.order-meta {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.status {
+  font-weight: 500;
+}
+
+/* ACTIONS — same placement as checkout */
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.back-home-btn {
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: 1px solid #f8bebc;
+  background: #f8bebc;
+
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.back-home-btn:hover {
+  background: #e4a9a7;
+}
+
+/* MOBILE — identical breakpoint behavior */
+@media (max-width: 768px) {
+  .order-page {
+    padding: 28px 22px;
+  }
+
+  .order-title {
+    font-size: 26px;
+  }
+}
