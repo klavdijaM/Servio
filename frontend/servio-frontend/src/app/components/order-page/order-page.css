@@ -33,7 +33,6 @@
   margin-bottom: 32px;
 }
 
-/* DELIVERY STATUS — occupies same visual weight as voucher section */
 .delivery-status {
   margin: 32px 0;
   padding: 22px;
@@ -53,7 +52,6 @@
   color: #555;
 }
 
-/* ORDER ITEMS — identical to checkout items */
 .order-items {
   display: flex;
   flex-direction: column;
@@ -92,7 +90,6 @@
   font-weight: 500;
 }
 
-/* ORDER META — mirrors checkout summary */
 .order-meta {
   margin-top: 32px;
   padding-top: 16px;
@@ -113,7 +110,6 @@
   font-weight: 500;
 }
 
-/* ACTIONS — same placement as checkout */
 .order-actions {
   display: flex;
   justify-content: flex-end;
@@ -136,7 +132,6 @@
   background: #e4a9a7;
 }
 
-/* MOBILE — identical breakpoint behavior */
 @media (max-width: 768px) {
   .order-page {
     padding: 28px 22px;

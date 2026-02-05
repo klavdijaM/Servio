@@ -22,6 +22,8 @@ export class OrderPageComponent implements OnInit, OnDestroy {
 
   estimatedDeliveryTime: Date | null = null;
   remainingMinutes = 0;
+  createdAtLocal: Date | null = null;
+
 
   private intervalId?: number; // needed to stop the timer
 
@@ -86,7 +88,8 @@ export class OrderPageComponent implements OnInit, OnDestroy {
     if (!this.order || !this.restaurant) return;
 
     // when the order was created => turns the text string returned by backend into js object
-    const createdAt = new Date(this.order.created_at);
+    const createdAt = new Date(this.order.created_at + 'Z');
+    this.createdAtLocal = createdAt;
 
     // when the food should arrive => in milliseconds
     this.estimatedDeliveryTime = new Date(
