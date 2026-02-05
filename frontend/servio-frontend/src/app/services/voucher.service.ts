@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 export interface Voucher {
+  id: number;
   code: string;
   discount_type: 'percentage' | 'fixed' | 'free_delivery';
   discount_value: number;

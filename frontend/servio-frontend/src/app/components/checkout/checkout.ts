@@ -5,6 +5,7 @@ import { CartService, CartItem } from '../../services/cart.service';
 import { RestaurantService, Restaurant } from '../../services/restaurant.service';
 import {Voucher, VoucherService} from '../../services/voucher.service';
 import {FormsModule} from '@angular/forms';
+import {OrderService} from '../../services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -34,7 +35,8 @@ export class CheckoutComponent implements OnInit {
     private restaurantService: RestaurantService,
     private voucherService: VoucherService,
     private cdr: ChangeDetectorRef,
-    private router: Router
+    private router: Router,
+    private orderService: OrderService
   ) {}
 
   // called when user navigates to /checkout
@@ -67,10 +69,35 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrder() {
-    alert('Order placed successfully!');
-    this.cartService.clearCart();
-    this.router.navigate(['/']);
+    const restaurantId = this.cartService.getRestaurantId(); // returns the restaurant the order belongs to
+
+    if (!restaurantId) {
+      return;
+    }
+
+    this.orderService.createOrder({
+      restaurantId,
+      items: this.items.map(item => ({
+        dishId: item.dishId,
+        quantity: item.quantity,
+        price: item.price
+      })),
+      voucherId: this.appliedVoucher?.id ?? null
+    }).subscribe({
+      next: (response) => {
+        // clear cart after successful order
+        this.cartService.clearCart();
+
+        // go to order tracking page
+        this.router.navigate(['/orders', response.orderId]);
+        this.cdr.detectChanges();
+      },
+      error: () => {
+        alert('Failed to place order');
+      }
+    });
   }
+
 
   applyVoucher() {
     // reset previous state if user tried out multiple vouchers

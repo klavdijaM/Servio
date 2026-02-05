@@ -45,6 +45,7 @@ function validateVoucher(req, res) {
         res.json({
             valid: true,
             voucher: {
+                id: voucher.id,
                 code: voucher.code,
                 discount_type: voucher.discount_type,
                 discount_value: voucher.discount_value

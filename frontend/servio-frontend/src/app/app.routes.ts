@@ -3,6 +3,7 @@ import { HomeComponent } from './components/home/home';
 import {RestaurantDetailComponent} from './components/restaurant-detail /restaurant-detail';
 import {ProfileComponent} from './components/profile/profile';
 import { CheckoutComponent } from './components/checkout/checkout';
+import {OrderPageComponent} from './components/order-page/order-page';
 
 
 export const routes: Routes = [
@@ -21,5 +22,8 @@ export const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent
+  },
+  {
+    path: 'orders/:id', component: OrderPageComponent
   }
 ];
