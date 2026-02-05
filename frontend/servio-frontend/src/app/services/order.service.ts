@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 // represents one line (item) in an order
 export interface OrderItem {
   dish_id: number;
+  name: string;
   quantity: number;
   price: number;
 }

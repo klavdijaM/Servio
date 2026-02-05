@@ -1,13 +1,13 @@
 import {Component, OnInit, OnDestroy, ChangeDetectorRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import { OrderService, Order, OrderItem } from '../../services/order.service';
 import {Restaurant, RestaurantService} from '../../services/restaurant.service';
 
 @Component({
   selector: 'app-order-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './order-page.html',
   styleUrl: './order-page.css'
 })
@@ -16,6 +16,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
 
   order: Order | null = null; // holds the order obj, starts as null
   items: OrderItem[] = []; // all items in the order
+  statusText = '';
 
   restaurant: Restaurant | null = null;
 
@@ -47,7 +48,7 @@ export class OrderPageComponent implements OnInit, OnDestroy {
       next: (response) => {
         this.order = response.order; // order metadata
         this.items = response.items; // list of dishes
-        this.setupDeliveryTimer(); // calculates delivery time
+        this.loadRestaurantAndSetupTimer(); // calculates delivery time
         this.cdr.detectChanges();
       },
       error: () => {
@@ -113,5 +114,20 @@ export class OrderPageComponent implements OnInit, OnDestroy {
       Math.ceil(diffMs / 60000), // converts milliseconds back to sec
       0
     );
+
+    if (this.remainingMinutes > 20) {
+      this.statusText = 'Order received';
+    } else if (this.remainingMinutes > 10) {
+      this.statusText = 'Preparing food';
+    } else if (this.remainingMinutes > 0) {
+      this.statusText = 'Out for delivery';
+    } else {
+      this.statusText = 'Delivered';
+
+      // Stop timer once delivered
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+      }
+    }
   }
 }

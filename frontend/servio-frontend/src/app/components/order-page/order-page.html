@@ -1,10 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+<section class="order-page">
 
-</body>
-</html>
+  <h1 class="order-title">Order tracking</h1>
+
+  @if (restaurant && order) {
+    <p class="order-restaurant">
+      Ordering from <strong>{{ restaurant.name }}</strong>
+    </p>
+  }
+
+  <!-- DELIVERY STATUS -->
+  <div class="delivery-status">
+
+    <h2 class="delivery-heading">
+      {{ statusText }}
+    </h2>
+
+    <p class="delivery-time">
+      @if (remainingMinutes > 0) {
+        Estimated delivery in
+        <strong>{{ remainingMinutes }} minutes</strong>
+      } @else {
+        <strong>Your order should arrive any moment</strong>
+      }
+    </p>
+
+  </div>
+
+  <!-- ORDER ITEMS -->
+  <div class="order-items">
+
+    <h3 class="section-title">Your order</h3>
+
+    @for (item of items; track item.dish_id) {
+      <div class="order-item">
+
+        <div class="item-left">
+          <span class="item-name">
+            {{ item.name }}
+          </span>
+
+          <span class="item-quantity">
+            × {{ item.quantity }}
+          </span>
+        </div>
+
+        <div class="item-right">
+          €{{ (item.price * item.quantity).toFixed(2) }}
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+  <!-- ORDER META -->
+  @if (order) {
+    <div class="order-meta">
+
+      <div class="meta-row">
+        <span>Status</span>
+        <span class="status">
+          {{ statusText }}
+        </span>
+      </div>
+
+      <div class="meta-row">
+        <span>Order placed at</span>
+        <span>
+          {{ order.created_at | date:'shortTime' }}
+        </span>
+      </div>
+
+    </div>
+  }
+
+  <!-- ACTIONS -->
+  <div class="order-actions">
+
+    <button
+      class="back-home-btn"
+      routerLink="/"
+    >
+      Back to home
+    </button>
+
+  </div>
+
+</section>

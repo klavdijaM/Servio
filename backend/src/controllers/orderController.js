@@ -75,9 +75,14 @@ function getOrderById(req, res) {
         WHERE id = ? AND user_id = ?`;
 
     const itemsQuery = `
-        SELECT dish_id, quantity, price
-        FROM order_items
-        WHERE order_id = ?`;
+        SELECT oi.dish_id,
+               d.name,
+               oi.quantity,
+               oi.price
+        FROM order_items oi
+                 JOIN dishes d ON d.id = oi.dish_id
+        WHERE oi.order_id = ?
+    `;
 
     db.get(orderQuery, [orderId, userId], (err, order) => {
             if (err) {
